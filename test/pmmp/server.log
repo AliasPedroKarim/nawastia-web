@@ -1,0 +1,48 @@
+2019-04-11 [00:14:22] [Server thread/INFO]: Loading pocketmine.yml...
+2019-04-11 [00:14:22] [Server thread/INFO]: Loading server properties...
+2019-04-11 [00:14:22] [Server thread/INFO]: Français (fra) sélectionné en tant que langage principal
+2019-04-11 [00:14:22] [Server thread/INFO]: Démarrage du serveur Minecraft Bedrock Edition version v1.10.0
+2019-04-11 [00:14:22] [Server thread/NOTICE]: Le mode "en ligne" est activé. Le serveur ne laissera pas se connecter les joueurs non connectés à XboxLive.
+2019-04-11 [00:14:22] [Server thread/NOTICE]: Pour désactiver la connection via xbox, changez "xbox-auth" de true en false.
+2019-04-11 [00:14:22] [Server thread/INFO]: Ouverture du serveur sur 0.0.0.0:19132
+2019-04-11 [00:14:23] [Server thread/INFO]: Ce serveur fonctionne en version PocketMine-MP 3.7.1
+2019-04-11 [00:14:23] [Server thread/INFO]: PocketMine-MP est distribué sous la licence LGPL
+2019-04-11 [00:14:23] [Server thread/INFO]: Loading resource packs...
+2019-04-11 [00:14:23] [Server thread/NOTICE]: World "world" not found
+2019-04-11 [00:14:23] [Server thread/INFO]: Preparing world "world"
+2019-04-11 [00:14:23] [Server thread/NOTICE]: Spawn terrain for world "world" is being generated in the background
+2019-04-11 [00:14:23] [Server thread/INFO]: Départ GS4 statut listener
+2019-04-11 [00:14:23] [Server thread/INFO]: Réglage du port query sur 19132
+2019-04-11 [00:14:23] [Server thread/INFO]: Le Query fonctionne sur 0.0.0.0:19132
+2019-04-11 [00:14:23] [Server thread/INFO]: Type de jeu par défaut : Mode Survie
+2019-04-11 [00:14:23] [Server thread/INFO]: Démarrer en  (1.555s)! Pour afficher l'aide "/help" ou "/?"
+2019-04-11 [00:18:03] [Server thread/INFO]: [Server] hello
+2019-04-11 [00:18:10] [Server thread/INFO]: Commande inconnue. Essayez /help pour voir la liste des commandes disponibles
+2019-04-11 [00:18:13] [Server thread/INFO]: Utilisation:  /ban <Nom> [Raison ...]
+2019-04-11 [00:18:40] [Server thread/INFO]: [CONSOLE: test01 a été banni]
+2019-04-11 [00:18:54] [Server thread/INFO]: [CONSOLE: test02 a été banni]
+2019-04-11 [00:19:14] [Server thread/INFO]: [CONSOLE: test03 a été banni]
+2019-04-11 [00:19:19] [Server thread/INFO]: Commande inconnue. Essayez /help pour voir la liste des commandes disponibles
+2019-04-11 [00:19:21] [Server thread/INFO]: [CONSOLE: Arrêt du serveur]
+2019-04-11 [00:19:21] [Server thread/INFO]: Unloading world "world"
+2019-04-11 [00:19:21] [Server thread/INFO]: Stopping other threads
+2019-04-11 [01:40:21] [Server thread/INFO]: Loading pocketmine.yml...
+2019-04-11 [01:40:21] [Server thread/INFO]: Loading server properties...
+2019-04-11 [01:40:21] [Server thread/INFO]: Français (fra) sélectionné en tant que langage principal
+2019-04-11 [01:40:21] [Server thread/INFO]: Démarrage du serveur Minecraft Bedrock Edition version v1.10.0
+2019-04-11 [01:40:21] [Server thread/NOTICE]: Le mode "en ligne" est activé. Le serveur ne laissera pas se connecter les joueurs non connectés à XboxLive.
+2019-04-11 [01:40:21] [Server thread/NOTICE]: Pour désactiver la connection via xbox, changez "xbox-auth" de true en false.
+2019-04-11 [01:40:21] [Server thread/INFO]: Ouverture du serveur sur 0.0.0.0:19132
+2019-04-11 [01:40:21] [Server thread/INFO]: Ce serveur fonctionne en version PocketMine-MP 3.7.1
+2019-04-11 [01:40:21] [Server thread/INFO]: PocketMine-MP est distribué sous la licence LGPL
+2019-04-11 [01:40:22] [Server thread/INFO]: Loading resource packs...
+2019-04-11 [01:40:22] [Server thread/INFO]: Preparing world "world"
+2019-04-11 [01:40:22] [Server thread/INFO]: Départ GS4 statut listener
+2019-04-11 [01:40:22] [Server thread/INFO]: Réglage du port query sur 19132
+2019-04-11 [01:40:22] [Server thread/INFO]: Le Query fonctionne sur 0.0.0.0:19132
+2019-04-11 [01:40:22] [Server thread/INFO]: Type de jeu par défaut : Mode Survie
+2019-04-11 [01:40:22] [Server thread/INFO]: Démarrer en  (0.575s)! Pour afficher l'aide "/help" ou "/?"
+2019-04-11 [01:40:46] [Server thread/INFO]: [CONSOLE: machin a été banni]
+2019-04-11 [01:43:43] [Server thread/INFO]: [CONSOLE: Arrêt du serveur]
+2019-04-11 [01:43:43] [Server thread/INFO]: Unloading world "world"
+2019-04-11 [01:43:43] [Server thread/INFO]: Stopping other threads
