@@ -6,8 +6,8 @@
  * Time: 16:39
  */
 
-use App\JoueurDAO;
-use App\Joueur;
+use App\Utilisateur\Utilisateur;
+use App\Utilisateur\UtilisateurDAO;
 
 require_once '../../inc/function.php';
 
@@ -16,9 +16,9 @@ if (isset($_POST['connexion'])){
     $identificateur = htmlspecialchars(trim($_POST['identificateur']));
     $motDePasse = htmlspecialchars(trim($_POST['motDePasse']));
 
-    $connexion = new JoueurDAO();
+    $connexion = new UtilisateurDAO();
 
-    $res = $connexion->connexionJoueur($identificateur, $motDePasse);
+    $res = $connexion->connexionUtilisateur($identificateur, $motDePasse);
 
     if ($res == false){
         header("Location: ../../connexion.php?userNoExist=true");
@@ -84,11 +84,11 @@ if (isset($_POST['connexion'])){
         }
     }
 
-    $connexion = new JoueurDAO();
+    $connexion = new UtilisateurDAO();
 
-    $unUtilisateur = new Joueur($pseudo, $email, $nom, $prenom, $genre, $fileDestination, 0, "aucune note", $pseudo_discord);
+    $unUtilisateur = new Utilisateur($pseudo, $email, $nom, $prenom, $genre, $fileDestination, 0, "aucune note", $pseudo_discord);
 
-    $res = $connexion->addJoueur($unUtilisateur, $motDePasse);
+    $res = $connexion->addUtilisateur($unUtilisateur, $motDePasse);
 
     if ($res === false){
         header("Location: ../../inscription.php?errorCreateUser=true");

@@ -6,9 +6,9 @@
  * Time: 23:53
  */
 
-namespace App;
+namespace App\Utilisateur;
 
-class Joueur{
+class Utilisateur{
 
     private $id,
             $pseudo,
@@ -20,14 +20,18 @@ class Joueur{
             $money,
             $note,
             $pseudo_discord,
+            $visibilite_utilisateur,
+            $followers_utilisateur,
+            $notification_activite,
             $id_status,
             $date_creation_compte,
             $date_dernier_activite,
             $ip_creation_compte,
-            $ip_dernier_activite;
+            $ip_dernier_activite,
+            $bg_profil;
 
     /**
-     * Joueur constructor.
+     * Utilisateur constructor.
      * @param string $pseudo
      * @param string $email
      * @param string $nom
@@ -291,6 +295,70 @@ class Joueur{
     public function setIpDernierActivite($ip_dernier_activite)
     {
         $this->ip_dernier_activite = $ip_dernier_activite;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBgProfil()
+    {
+        return $this->bg_profil;
+    }
+
+    /**
+     * @param mixed $bg_profil
+     */
+    public function setBgProfil($bg_profil): void
+    {
+        $this->bg_profil = $bg_profil;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVisibiliteUtilisateur()
+    {
+        return $this->visibilite_utilisateur;
+    }
+
+    /**
+     * @param mixed $visibilite_utilisateur
+     */
+    public function setVisibiliteUtilisateur($visibilite_utilisateur): void
+    {
+        $this->visibilite_utilisateur = $visibilite_utilisateur;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFollowersUtilisateur()
+    {
+        return $this->followers_utilisateur;
+    }
+
+    /**
+     * @param mixed $followers_utilisateur
+     */
+    public function setFollowersUtilisateur($followers_utilisateur): void
+    {
+        $this->followers_utilisateur = $followers_utilisateur;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNotificationActivite()
+    {
+        return $this->notification_activite;
+    }
+
+    /**
+     * @param mixed $notification_activite
+     */
+    public function setNotificationActivite($notification_activite): void
+    {
+        $this->notification_activite = $notification_activite;
     }
 
 

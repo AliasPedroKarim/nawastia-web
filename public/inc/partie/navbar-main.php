@@ -1,12 +1,14 @@
 <header class="w-100 top-fixed">
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(52, 58, 64, 0.0);">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom" style="background-color: rgba(52, 58, 64, 0.0);">
         <div class="container d-flex justify-content-between">
-            <a href="\" class="navbar-brand covered-top-center main-logo" style="width: 40px; height: 40px; background-image: url('assets/img/icon/icon-website.webp');">
+            <div class="d-flex align-items-center">
+                <a href="\" class="navbar-brand covered-top-center main-logo" style="width: 40px; height: 40px; background-image: url('<?= $main_logo_web ?>'); margin-right: 20px;">
 
-            </a>
-            <div class="navbar-brand">
-                <a href="\" class="text-light">Nawastia</a>
-                <span class="small-caractere">- <?= $status->players->online ?> joueurs connectés</span>
+                </a>
+                <div class="navbar-brand">
+                    <a href="\" class="text-light">Nawastia</a>
+                    <span class="small-caractere">- <?= $status->players->online ?> joueurs connectés</span>
+                </div>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#list-item" aria-controls="list-item" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -56,9 +58,13 @@
                     <div class="dropdown-menu dropdown-menu-right menu-user">
                         <h6 class="dropdown-header">Gestion</h6>
                         <a class="dropdown-item" href="profil.php">Profil</a>
-                        <?php if (isset($_SESSION['_1'])): ?>
-                            <a class="dropdown-item" href="administration.php">Administration <span class="badge badge-danger">admin</span></a>
-                            <a class="dropdown-item" href="administration.php">Statistique <span class="badge badge-danger">admin</span> </a>
+                        <?php if (isset($_SESSION['_1'])):
+                            if (isset($navbar_status_admin) && !empty($navbar_status_admin)):
+                                if ($navbar_status_admin == true):?>
+                                    <a class="dropdown-item" href="administration.php">Administration <span class="badge badge-danger">admin</span></a>
+                                    <a class="dropdown-item" href="administration.php">Statistique <span class="badge badge-danger">admin</span> </a>
+                                <?php endif;
+                            endif; ?>
                         <?php endif; ?>
                         <h6 class="dropdown-header">Status</h6>
                         <a class="dropdown-item" href="inc/traitement/deconnexion.php">Deconnexion</a>

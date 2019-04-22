@@ -1,0 +1,361 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #edf2f9;
+  border-radius: .5rem
+}
+
+.card>hr {
+  margin-right: 0;
+  margin-left: 0
+}
+
+.card>.list-group:first-child .list-group-item:first-child {
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem
+}
+
+.card>.list-group:last-child .list-group-item:last-child {
+  border-bottom-right-radius: .5rem;
+  border-bottom-left-radius: .5rem
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 1.5rem
+}
+
+.card-title {
+  margin-bottom: 1rem
+}
+
+.card-subtitle {
+  margin-top: -.5rem
+}
+
+.card-subtitle,
+.card-text:last-child {
+  margin-bottom: 0
+}
+
+.card-link:hover {
+  text-decoration: none
+}
+
+.card-link+.card-link {
+  margin-left: 1.5rem
+}
+
+.card-header {
+  padding: 1rem 1.5rem;
+  margin-bottom: 0;
+  background-color: transparent;
+  border-bottom: 1px solid #edf2f9
+}
+
+.card-header:first-child {
+  border-radius: calc(.5rem - 1px) calc(.5rem - 1px) 0 0
+}
+
+.card-header+.list-group .list-group-item:first-child {
+  border-top: 0
+}
+
+.card-footer {
+  padding: 1rem 1.5rem;
+  background-color: transparent;
+  border-top: 1px solid #edf2f9
+}
+
+.card-footer:last-child {
+  border-radius: 0 0 calc(.5rem - 1px) calc(.5rem - 1px)
+}
+
+.card-header-tabs {
+  margin-bottom: -1rem;
+  border-bottom: 0
+}
+
+.card-header-pills,
+.card-header-tabs {
+  margin-right: -.75rem;
+  margin-left: -.75rem
+}
+
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.25rem
+}
+
+.card-img {
+  width: 100%;
+  border-radius: calc(.5rem - 1px)
+}
+
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: calc(.5rem - 1px);
+  border-top-right-radius: calc(.5rem - 1px)
+}
+
+.card-img-bottom {
+  width: 100%;
+  border-bottom-right-radius: calc(.5rem - 1px);
+  border-bottom-left-radius: calc(.5rem - 1px)
+}
+
+.card-deck {
+  display: flex;
+  flex-direction: column
+}
+
+.card-deck .card {
+  margin-bottom: 12px
+}
+
+@media (min-width:576px) {
+  .card-deck {
+    flex-flow: row wrap;
+    margin-right: -12px;
+    margin-left: -12px
+  }
+  .card-deck .card {
+    display: flex;
+    flex: 1 0 0%;
+    flex-direction: column;
+    margin-right: 12px;
+    margin-bottom: 0;
+    margin-left: 12px
+  }
+}
+
+.card-group {
+  display: flex;
+  flex-direction: column
+}
+
+.card-group>.card {
+  margin-bottom: 12px
+}
+
+@media (min-width:576px) {
+  .card-group {
+    flex-flow: row wrap
+  }
+  .card-group>.card {
+    flex: 1 0 0%;
+    margin-bottom: 0
+  }
+  .card-group>.card+.card {
+    margin-left: 0;
+    border-left: 0
+  }
+  .card-group>.card:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0
+  }
+  .card-group>.card:not(:last-child) .card-header,
+  .card-group>.card:not(:last-child) .card-img-top {
+    border-top-right-radius: 0
+  }
+  .card-group>.card:not(:last-child) .card-footer,
+  .card-group>.card:not(:last-child) .card-img-bottom {
+    border-bottom-right-radius: 0
+  }
+  .card-group>.card:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0
+  }
+  .card-group>.card:not(:first-child) .card-header,
+  .card-group>.card:not(:first-child) .card-img-top {
+    border-top-left-radius: 0
+  }
+  .card-group>.card:not(:first-child) .card-footer,
+  .card-group>.card:not(:first-child) .card-img-bottom {
+    border-bottom-left-radius: 0
+  }
+}
+
+.card-columns .card {
+  margin-bottom: 1rem
+}
+
+@media (min-width:576px) {
+  .card-columns {
+    column-count: 3;
+    column-gap: 1.25rem;
+    orphans: 1;
+    widows: 1
+  }
+  .card-columns .card {
+    display: inline-block;
+    width: 100%
+  }
+}
+
+.accordion>.card {
+  overflow: hidden
+}
+
+.accordion>.card:not(:first-of-type) .card-header:first-child {
+  border-radius: 0
+}
+
+.accordion>.card:not(:first-of-type):not(:last-of-type) {
+  border-bottom: 0;
+  border-radius: 0
+}
+
+.accordion>.card:first-of-type {
+  border-bottom: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0
+}
+
+.accordion>.card:last-of-type {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0
+}
+
+.accordion>.card .card-header {
+  margin-bottom: -1px
+}
+
+
+.card {
+  margin-bottom: 1.5rem;
+  border-color: #edf2f9;
+  box-shadow: 0 .75rem 1.5rem rgba(18, 38, 63, .03)
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: center;
+  min-height: 3.75rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem
+}
+
+.card-header>* {
+  flex: 1
+}
+
+.card-title {
+  margin-bottom: .5rem
+}
+
+.card-header-title {
+  margin-bottom: 0
+}
+
+.card-header-tabs {
+  margin: -.5rem 0
+}
+
+.card-header-tabs .nav-link {
+  padding-top: calc((3.75rem - 1em * 1.5) / 2)!important;
+  padding-bottom: calc((3.75rem - 1em * 1.5) / 2)!important
+}
+
+.card-table {
+  margin-bottom: 0
+}
+
+.card-table thead th {
+  border-top-width: 0
+}
+
+.card-table tbody td:first-child,
+.card-table thead th:first-child {
+  padding-left: 1.5rem!important
+}
+
+.card-table tbody td:last-child,
+.card-table thead th:last-child {
+  padding-right: 1.5rem!important
+}
+
+.card>.card-table:first-child>tbody:first-child>tr:first-child>td:first-child,
+.card>.card-table:first-child>tbody:first-child>tr:first-child>th:first-child,
+.card>.card-table:first-child>tfoot:first-child>tr:first-child>td:first-child,
+.card>.card-table:first-child>tfoot:first-child>tr:first-child>th:first-child,
+.card>.card-table:first-child>thead:first-child>tr:first-child>td:first-child,
+.card>.card-table:first-child>thead:first-child>tr:first-child>th:first-child,
+.card>.table-responsive:first-child>.card-table>tbody:first-child>tr:first-child>td:first-child,
+.card>.table-responsive:first-child>.card-table>tbody:first-child>tr:first-child>th:first-child,
+.card>.table-responsive:first-child>.card-table>tfoot:first-child>tr:first-child>td:first-child,
+.card>.table-responsive:first-child>.card-table>tfoot:first-child>tr:first-child>th:first-child,
+.card>.table-responsive:first-child>.card-table>thead:first-child>tr:first-child>td:first-child,
+.card>.table-responsive:first-child>.card-table>thead:first-child>tr:first-child>th:first-child {
+  border-top-left-radius: .5rem
+}
+
+.card>.card-table:first-child>tbody:first-child>tr:first-child>td:last-child,
+.card>.card-table:first-child>tbody:first-child>tr:first-child>th:last-child,
+.card>.card-table:first-child>tfoot:first-child>tr:first-child>td:last-child,
+.card>.card-table:first-child>tfoot:first-child>tr:first-child>th:last-child,
+.card>.card-table:first-child>thead:first-child>tr:first-child>td:last-child,
+.card>.card-table:first-child>thead:first-child>tr:first-child>th:last-child,
+.card>.table-responsive:first-child>.card-table>tbody:first-child>tr:first-child>td:last-child,
+.card>.table-responsive:first-child>.card-table>tbody:first-child>tr:first-child>th:last-child,
+.card>.table-responsive:first-child>.card-table>tfoot:first-child>tr:first-child>td:last-child,
+.card>.table-responsive:first-child>.card-table>tfoot:first-child>tr:first-child>th:last-child,
+.card>.table-responsive:first-child>.card-table>thead:first-child>tr:first-child>td:last-child,
+.card>.table-responsive:first-child>.card-table>thead:first-child>tr:first-child>th:last-child {
+  border-top-right-radius: .5rem
+}
+
+.card-avatar {
+  display: block!important;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem
+}
+
+.card-avatar-top {
+  margin-top: -3rem
+}
+
+.card-avatar-top.avatar-xs {
+  margin-top: -2.3125rem
+}
+
+.card-avatar-top.avatar-sm {
+  margin-top: -2.75rem
+}
+
+.card-avatar-top.avatar-lg {
+  margin-top: -3.5rem
+}
+
+.card-avatar-top.avatar-xl {
+  margin-top: -4.0625rem
+}
+
+.card-avatar-top.avatar-xxl {
+  margin-top: -5.5rem
+}
+
+.card-dropdown {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem
+}
+
+.card-inactive {
+  border-color: #e3ebf6;
+  border-style: dashed;
+  background-color: transparent;
+  box-shadow: none
+}

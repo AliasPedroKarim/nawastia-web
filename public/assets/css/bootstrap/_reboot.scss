@@ -11,9 +11,9 @@
 // Document
 //
 // 1. Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
-// 2. Change the default font family in all browsers.
+// 2. Change the default fonts family in all browsers.
 // 3. Correct the line height in all browsers.
-// 4. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
+// 4. Prevent adjustments of fonts size after orientation changes in IE on Windows Phone and in iOS.
 // 5. Change the default tap highlight to be completely transparent in iOS.
 
 *,
@@ -151,11 +151,11 @@ blockquote {
 
 b,
 strong {
-  font-weight: $font-weight-bolder; // Add the correct font weight in Chrome, Edge, and Safari
+  font-weight: $font-weight-bolder; // Add the correct fonts weight in Chrome, Edge, and Safari
 }
 
 small {
-  @include font-size(80%); // Add the correct font size in all browsers
+  @include font-size(80%); // Add the correct fonts size in all browsers
 }
 
 //
@@ -220,7 +220,7 @@ code,
 kbd,
 samp {
   font-family: $font-family-monospace;
-  @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
+  @include font-size(1em); // Correct the odd `em` fonts sizing in all browsers.
 }
 
 pre {
@@ -451,7 +451,7 @@ progress {
 
 //
 // 1. Correct the inability to style clickable types in iOS and Safari.
-// 2. Change font properties to `inherit` in Safari.
+// 2. Change fonts properties to `inherit` in Safari.
 //
 
 ::-webkit-file-upload-button {

@@ -10,6 +10,8 @@ require_once 'inc/function.php';
 
 $title =  $debug . "Inscription" . $main_name_web;
 
+require_once 'inc/pre-load-function.php';
+
 ?><!DOCTYPE html>
 <html lang="en">
     <?php require_once 'inc/partie/head.php'; ?>
@@ -25,6 +27,15 @@ $title =  $debug . "Inscription" . $main_name_web;
                         <div class="modal-content">
                             <div class="modal-body">
                                 <form enctype="multipart/form-data" class="needs-validation" style="text-align: center;" method="post" action="inc/traitement/connexion-inscription.php" novalidate>
+
+                                    <div class="col-md-12 d-flex justify-content-between">
+                                        <a href="\">
+                                            <span class="badge badge-primary" style="font-size: 100%;"><i class="fe fe-home"></i></span>
+                                        </a>
+                                        <a href="connexion.php">
+                                            <span class="badge badge-secondary" style="font-size: 100%;"><i class="fe fe-log-in"></i></span>
+                                        </a>
+                                    </div>
 
                                     <div class="col-md-12" style="display: flex; justify-content: center; align-content: center;">
                                         <div class="mb-4 covered-top-center" style="width: 71px; height: 71px; background-image: url('assets/img/icon/icon-website.webp'); text-align: center;">
@@ -171,10 +182,9 @@ $title =  $debug . "Inscription" . $main_name_web;
     </body>
 
     <script src="assets/js/main.js" type="application/javascript"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="assets/js/jquery/jquery-1.11.0.js"></script>
     <!-- BS JavaScript -->
     <script type="text/javascript" src="assets/js/bootstrap.js"></script>
     <!-- Have fun using Bootstrap JS -->

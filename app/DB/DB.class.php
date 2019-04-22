@@ -6,10 +6,10 @@
  * Time: 15:02
  */
 
-namespace App;
+namespace App\DB;
 
-use \PDO;
 use \Exception;
+use \PDO;
 
 class DB{
 
