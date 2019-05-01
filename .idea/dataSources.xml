@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="nawastia_db@localhost" uuid="d354edd1-c012-45cf-8a79-c7d1287bcc7d">
+    <data-source source="LOCAL" name="nawastia_db@localhost [2]" uuid="f65d40d4-da29-4a8a-9639-6e9f400805a0">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>

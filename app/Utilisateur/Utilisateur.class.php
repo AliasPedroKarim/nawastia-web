@@ -16,7 +16,7 @@ class Utilisateur{
             $nom,
             $prenom,
             $genre,
-            $photo_profil,
+            $id_image_utilisateur,
             $money,
             $note,
             $pseudo_discord,
@@ -37,20 +37,18 @@ class Utilisateur{
      * @param string $nom
      * @param string $prenom
      * @param string $genre
-     * @param string $photo_profil
      * @param int $money
      * @param string $note
      * @param string $pseudo_discord
      * @param array $id_status
      */
-    public function __construct($pseudo = "", $email = "", $nom = "", $prenom = "", $genre = "", $photo_profil = "", $money = 0, $note = "", $pseudo_discord = "", $id_status = array())
+    public function __construct($pseudo = "", $email = "", $nom = "", $prenom = "", $genre = "", $money = 0, $note = "", $pseudo_discord = "", $id_status = array())
     {
         $this->setPseudo($pseudo);
         $this->setEmail($email);
         $this->setNom($nom);
         $this->setPrenom($prenom);
         $this->setGenre($genre);
-        $this->setPhotoProfil($photo_profil);
         $this->setMoney($money);
         $this->setNote($note);
         $this->setPseudoDiscord($pseudo_discord);
@@ -151,22 +149,6 @@ class Utilisateur{
     public function setGenre($genre)
     {
         $this->genre = $genre;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPhotoProfil()
-    {
-        return $this->photo_profil;
-    }
-
-    /**
-     * @param mixed $photo_profil
-     */
-    public function setPhotoProfil($photo_profil)
-    {
-        $this->photo_profil = $photo_profil;
     }
 
     /**
@@ -359,6 +341,22 @@ class Utilisateur{
     public function setNotificationActivite($notification_activite): void
     {
         $this->notification_activite = $notification_activite;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdImageUtilisateur()
+    {
+        return $this->id_image_utilisateur;
+    }
+
+    /**
+     * @param mixed $id_image_utilisateur
+     */
+    public function setIdImageUtilisateur($id_image_utilisateur): void
+    {
+        $this->id_image_utilisateur = $id_image_utilisateur;
     }
 
 

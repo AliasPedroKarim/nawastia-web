@@ -118,8 +118,12 @@
   }
 
   function setTransitionEndSupport() {
-    $.fn.emulateTransitionEnd = transitionEndEmulator;
-    $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
+    try {
+      $.fn.emulateTransitionEnd = transitionEndEmulator;
+      $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
+    }catch (e) {
+      
+    }
   }
   /**
    * --------------------------------------------------------------------------
@@ -4433,3 +4437,4 @@
 
 }));
 //# sourceMappingURL=bootstrap.js.map
+

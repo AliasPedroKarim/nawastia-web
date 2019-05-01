@@ -13,8 +13,30 @@ use \PDO;
 
 class DB{
 
+    private $setting = [];
+
+    private static $_instance;
+
+    public static function getInstance(){
+        if (is_null(self::$_instance)){
+            self::$_instance = new DB();
+        }
+        return self::$_instance;
+    }
+
+    public function __construct(){
+        $this->setting = require dirname(__DIR__, 2) . '/config/config.php';
+    }
+
+    public function get($key){
+        if (!isset($this->setting[$key])){
+            return null;
+        }
+        return $this->setting[$key];
+    }
+
     public $_PDO;
-    private $_host,
+    /*private $_host,
         $_dbName,
         $_port,
         $_nomUtilisateur,
@@ -25,7 +47,7 @@ class DB{
         $this->setPort($port);
         $this->setNomUtilisateur($nomUtilisateur);
         $this->setMotDePasse($motDePasse);
-    }
+    }*/
 
     /**
      * Permet de commencer une connexion vers la base de donnée
@@ -34,11 +56,11 @@ class DB{
      */
     public function connexion(){
         try{
-            $this->setPDO(new PDO("mysql:host={$this->getHost()};dbname={$this->getDbName()};port={$this->getPort()};charset=utf8", "{$this->getNomUtilisateur()}", "{$this->getMotDePasse()}"));
-            $this->_PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // Emettre une erreur à chaque fois qu'une requête échoue !!!
+            $this->setPDO(new PDO("mysql:host={$this->get('db_host')};dbname={$this->get('db_name')};port={$this->get('port')};charset={$this->get('charset_default')}", "{$this->get('db_user')}", "{$this->get('db_pass')}"));
+            $this->_PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             return $this->_PDO;
         }catch (Exception $ex){
-            echo "Une erreur est survenue lors de la connexion à la base de donnée !\n<div><code>' . $ex . '</code></div></div>";
+            //echo "Une erreur est survenue lors de la connexion à la base de donnée !\n<div><code>' . $ex . '</code></div></div>";
             $this->_PDO = null;
             die();
         }
@@ -60,85 +82,5 @@ class DB{
     public function setPDO(PDO $PDO)
     {
         $this->_PDO = $PDO;
-    }
-
-    /**
-     * @return string
-     */
-    public function getHost()
-    {
-        return $this->_host;
-    }
-
-    /**
-     * @param mixed $host
-     */
-    public function setHost($host)
-    {
-        $this->_host = $host;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDbName()
-    {
-        return $this->_dbName;
-    }
-
-    /**
-     * @param mixed $dbName
-     */
-    public function setDbName($dbName)
-    {
-        $this->_dbName = $dbName;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPort()
-    {
-        return $this->_port;
-    }
-
-    /**
-     * @param int $port
-     */
-    public function setPort($port)
-    {
-        $this->_port = $port;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNomUtilisateur()
-    {
-        return $this->_nomUtilisateur;
-    }
-
-    /**
-     * @param mixed $nomUtilisateur
-     */
-    public function setNomUtilisateur($nomUtilisateur)
-    {
-        $this->_nomUtilisateur = $nomUtilisateur;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMotDePasse()
-    {
-        return $this->_motDePasse;
-    }
-
-    /**
-     * @param mixed $motDePasse
-     */
-    public function setMotDePasse($motDePasse)
-    {
-        $this->_motDePasse = $motDePasse;
     }
 }

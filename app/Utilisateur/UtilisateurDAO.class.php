@@ -9,18 +9,20 @@
 namespace App\Utilisateur;
 
 use App\DB\DB;
+use App\Main\MainSecurity;
 use PDO;
 
-class UtilisateurDAO extends DB{
+class UtilisateurDAO extends Utilisateur{
 
     public $ip,
             $time;
+    private $db;
 
-    public function __construct($host = "localhost", $dbName = "nawastia_db", $port = 3307, $nomUtilisateur = "root", $motDePasse = "")
-    {
-        parent::__construct($host, $dbName, $port, $nomUtilisateur, $motDePasse);
+    public function __construct(){
+        parent::__construct();
         $this->ip = get_ip();
         $this->time = date("Y-m-d H:i:s");
+        $this->db = DB::getInstance()->connexion();
     }
 
     /**
@@ -29,16 +31,13 @@ class UtilisateurDAO extends DB{
      * @param $identificateur
      * @param $motDePasse
      *
-     * @return bool|Utilisateur
+     * @return bool|array
      */
 
     public function connexionUtilisateur($identificateur, $motDePasse){
-
-        $db = $this->connexion();
-
         $motDePasse = sha1($motDePasse);
 
-        $res = $db->prepare("SELECT * FROM utilisateur WHERE (pseudo = :pseudo OR email = :email) AND mot_de_passe = :motDePasse");
+        $res = $this->db->prepare("SELECT * FROM utilisateur WHERE (pseudo = :pseudo OR email = :email) AND mot_de_passe = :motDePasse");
 
         $res->bindParam(':pseudo', $identificateur, PDO::PARAM_STR);
         $res->bindParam(':email', $identificateur, PDO::PARAM_STR);
@@ -49,11 +48,10 @@ class UtilisateurDAO extends DB{
         $unUtilisateur = $res->fetchAll();
 
         if (empty($unUtilisateur)){
-            echo "[TEST] Attention le joueur n'existe pas ! On ne peut pas modifier ces informations";
-            return false;
+            return ["error" => true, "message" => "Email/Nom d'utilisateur ou mot de passe incorrect !"];
 
         }else{
-            return $this->giveObjectUtilisateur($unUtilisateur);
+            return ["error" => false, "message" => "Connexion réussi !", "data" => $this->giveObjectUtilisateur($unUtilisateur)];
         }
     }
 
@@ -64,7 +62,7 @@ class UtilisateurDAO extends DB{
         $time = $this->time;
         $ip = $this->ip;
 
-        $objetUtilisateur =  new Utilisateur($unUtilisateur[0]['pseudo'], $unUtilisateur[0]['email'],$unUtilisateur[0]['nom'], $unUtilisateur[0]['prenom'], $unUtilisateur[0]['genre'], $unUtilisateur[0]['photo_profil'],$unUtilisateur[0]['money'], $unUtilisateur[0]['note'], $unUtilisateur[0]['pseudo_discord'] ,$allRole);
+        $objetUtilisateur =  new Utilisateur($unUtilisateur[0]['pseudo'], $unUtilisateur[0]['email'],$unUtilisateur[0]['nom'], $unUtilisateur[0]['prenom'], $unUtilisateur[0]['genre'], $unUtilisateur[0]['money'], $unUtilisateur[0]['note'], $unUtilisateur[0]['pseudo_discord'] ,$allRole);
         $objetUtilisateur->setId($unUtilisateur[0]['id_utilisateur']);
         $objetUtilisateur->setDateDernierActivite($time);
         $objetUtilisateur->setDateCreationCompte($unUtilisateur[0]['date_creation_compte']);
@@ -75,6 +73,7 @@ class UtilisateurDAO extends DB{
         $objetUtilisateur->setVisibiliteUtilisateur($unUtilisateur[0]['visibilite_utilisateur']);
         $objetUtilisateur->setFollowersUtilisateur($unUtilisateur[0]['followers_utilisateur']);
         $objetUtilisateur->setNotificationActivite($unUtilisateur[0]['notification_activite']);
+        $objetUtilisateur->setIdImageUtilisateur($unUtilisateur[0]['id_image_utilisateur']);
 
         $this->updateActivity($unUtilisateur[0]['id_utilisateur'], $time, $ip);
 
@@ -82,9 +81,8 @@ class UtilisateurDAO extends DB{
     }
 
     public function getAllRole($identificateur){
-        $db = $this->connexion();
 
-        $res = $db->prepare("SELECT * FROM possede_role, utilisateur WHERE utilisateur.id_utilisateur = :id_utilisateur AND possede_role.id_utilisateur = :id_utilisateur");
+        $res = $this->db->prepare("SELECT * FROM possede_role, utilisateur WHERE utilisateur.id_utilisateur = :id_utilisateur AND possede_role.id_utilisateur = :id_utilisateur");
 
         $res->bindParam(':id_utilisateur', $identificateur, PDO::PARAM_INT);
 
@@ -94,9 +92,8 @@ class UtilisateurDAO extends DB{
     }
 
     public function findRole($id_status){
-        $db = $this->connexion();
 
-        $res = $db->prepare("SELECT * FROM status WHERE id_status = :id_status");
+        $res = $this->db->prepare("SELECT * FROM status WHERE id_status = :id_status");
 
         $res->bindParam(':id_status', $id_status, PDO::PARAM_INT);
 
@@ -106,12 +103,11 @@ class UtilisateurDAO extends DB{
     }
 
     public function setRole($id_utilisateur, $id_status){
-        $db = $this->connexion();
 
         $verifExist = $this->findRole($id_status);
 
-        if (empty($verifExist)){
-            $res = $db->prepare("INSERT INTO possede_role(id_utilisateur, id_status) VALUES(:id_utilisateur, :id_status)");
+        if(!empty($verifExist)){
+            $res = $this->db->prepare("INSERT INTO possede_role(id_utilisateur, id_status) VALUES(:id_utilisateur, :id_status)");
 
             $res->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
             $res->bindParam(':id_status', $id_status, PDO::PARAM_INT);
@@ -133,10 +129,9 @@ class UtilisateurDAO extends DB{
      *
      * @param Utilisateur $utilisateur
      *
-     * @return bool
+     * @return mixed
      */
     public function addUtilisateur(Utilisateur $utilisateur, $nomDePasse){
-        $db = $this->connexion();
 
         $unUtilisateur = $this->findUtilisateur($utilisateur);
 
@@ -144,14 +139,14 @@ class UtilisateurDAO extends DB{
 
             $nomDePasse = sha1($nomDePasse);
 
-            $res = $db->prepare("INSERT INTO 
+            $res = $this->db->prepare("INSERT INTO 
                                     utilisateur(pseudo, 
                                     email, 
                                     nom, 
                                     prenom, 
                                     mot_de_passe, 
                                     genre, 
-                                    photo_profil, 
+                                    id_image_utilisateur,
                                     money, 
                                     note, 
                                     pseudo_discord, 
@@ -166,7 +161,7 @@ class UtilisateurDAO extends DB{
                                       :prenom,
                                       :mot_de_passe,
                                       :genre,
-                                      :photo_profil,
+                                      :id_image_utilisateur,
                                       :money,
                                       :note,
                                       :pseudo_discord,
@@ -176,29 +171,44 @@ class UtilisateurDAO extends DB{
                                       :ip_dernier_activite
                                     )");
 
-            $res->bindParam(':pseudo', $utilisateur->getPseudo(), PDO::PARAM_STR);
-            $res->bindParam(':email', $utilisateur->getEmail(), PDO::PARAM_STR);
-            $res->bindParam(':nom', $utilisateur->getNom(), PDO::PARAM_STR);
-            $res->bindParam(':prenom', $utilisateur->getPrenom(), PDO::PARAM_STR);
-            $res->bindParam(':mot_de_passe', $nomDePasse, PDO::PARAM_STR);
-            $res->bindParam(':genre', $utilisateur->getGenre(), PDO::PARAM_STR);
-            $res->bindParam(':photo_profil', $utilisateur->getPhotoProfil(), PDO::PARAM_STR);
-            $res->bindParam(':money', $utilisateur->getMoney(), PDO::PARAM_INT);
-            $res->bindParam(':note', $utilisateur->getNote(), PDO::PARAM_STR);
-            $res->bindParam(':pseudo_discord', $utilisateur->getPseudoDiscord(), PDO::PARAM_STR);
-            $res->bindParam(':date_creation_compte', $this->time, PDO::PARAM_STR);
-            $res->bindParam(':date_dernier_activite', $this->time, PDO::PARAM_STR);
-            $res->bindParam(':ip_creation_compte', $this->ip, PDO::PARAM_STR);
-            $res->bindParam(':ip_dernier_activite', $this->ip, PDO::PARAM_STR);
+            $pseudo = $utilisateur->getPseudo();
+            $res->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+            $email = $utilisateur->getEmail();
+            $res->bindParam(':email', $email, PDO::PARAM_STR);
+            $nom = $utilisateur->getNom();
+            $res->bindParam(':nom', $nom, PDO::PARAM_STR);
+            $prenom = $utilisateur->getPrenom();
+            $res->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+            $mot_de_passe = $nomDePasse;
+            $res->bindParam(':mot_de_passe', $mot_de_passe, PDO::PARAM_STR);
+            $genre = $utilisateur->getGenre();
+            $res->bindParam(':genre', $genre, PDO::PARAM_STR);
+            $id_image_utilisateur = $utilisateur->getIdImageUtilisateur();
+            $res->bindParam(':id_image_utilisateur', $id_image_utilisateur, PDO::PARAM_INT);
+            $money = $utilisateur->getMoney();
+            $res->bindParam(':money', $money, PDO::PARAM_INT);
+            $note = $utilisateur->getNote();
+            $res->bindParam(':note', $note, PDO::PARAM_STR);
+            $pseudo_discord = $utilisateur->getPseudoDiscord();
+            $res->bindParam(':pseudo_discord', $pseudo_discord, PDO::PARAM_STR);
+
+            $time = $this->time;
+            $ip = $this->ip;
+            $res->bindParam(':date_creation_compte', $time, PDO::PARAM_STR);
+            $res->bindParam(':date_dernier_activite', $time, PDO::PARAM_STR);
+            $res->bindParam(':ip_creation_compte', $ip, PDO::PARAM_STR);
+            $res->bindParam(':ip_dernier_activite', $ip, PDO::PARAM_STR);
 
             $res->execute();
 
             if ($res == false){
-                return false;
+                return ["error" => true, "message" => "Une erreur a été détecté la création de votre compte."];
             }else{
-                $req = $db->prepare("SELECT * FROM utilisateur WHERE pseudo = :pseudo");
+                $req = $this->db->prepare("SELECT * FROM utilisateur WHERE pseudo = :pseudo");
 
-                $req->bindParam(':pseudo', $utilisateur->getPseudo(), PDO::PARAM_STR);
+                $pseudo = $utilisateur->getPseudo();
+
+                $req->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
 
                 $req->execute();
 
@@ -206,14 +216,14 @@ class UtilisateurDAO extends DB{
                 $setRole = $this->setRole($res1[0]['id_utilisateur'], 8);
 
                 if ($setRole == false){
-                    return false;
+                    return ["error" => true, "message" => "Attention ! Vous n'avez pas reçu le rôle de base. <br>Veuillez contacter en administrateur pour régler le problème."];
                 }else{
-                    return true;
+                    return ["error" => false, "message" => "Votre compte a été créé avec succès."];
                 }
             }
 
         }else{
-            return false;
+            return ["error" => true, "message" => "Attention ! L'utilisateur que vous essayez de créer existe déjà. <br>Veuillez changer le pseudo ou le mail pour pouvoir créer un nouvel utilisateur."];
         }
 
     }
@@ -222,8 +232,7 @@ class UtilisateurDAO extends DB{
         $exist = $this->findUtilisateurNoOjbet($identificateur);
 
         if (isset($exist)){
-            $db = $this->connexion();
-            $res = $db->prepare("UPDATE utilisateur SET date_dernier_activite = :date_dernier_activite, ip_dernier_activite = :ip_dernier_activite 
+            $res = $this->db->prepare("UPDATE utilisateur SET date_dernier_activite = :date_dernier_activite, ip_dernier_activite = :ip_dernier_activite 
                                     WHERE id_utilisateur = :id_utilisateur");
 
             $res->bindParam(':date_dernier_activite', $time, PDO::PARAM_STR);
@@ -240,8 +249,7 @@ class UtilisateurDAO extends DB{
         $exist = $this->findUtilisateurNoOjbet($identificateur);
 
         if (isset($exist)){
-            $db = $this->connexion();
-            $res = $db->prepare("UPDATE utilisateur SET bg_profil = :bg_profile 
+            $res = $this->db->prepare("UPDATE utilisateur SET bg_profil = :bg_profile 
                                     WHERE id_utilisateur = :id_utilisateur");
 
             $res->bindParam(':bg_profile', $path, PDO::PARAM_STR);
@@ -254,7 +262,6 @@ class UtilisateurDAO extends DB{
     }
 
     public function edit_profil__async(Utilisateur $utilisateur){
-        $db = $this->connexion();
 
         $unUtilisateur = $this->findUtilisateur($utilisateur);
 
@@ -265,13 +272,15 @@ class UtilisateurDAO extends DB{
             $ip = $this->ip;
             $time = $this->time;
 
-            $res = $db->prepare("UPDATE utilisateur 
+            $res = $this->db->prepare("UPDATE utilisateur 
                                   SET pseudo = :pseudo,
                                     email = :email,
                                     nom = :nom,
                                     prenom = :prenom,
                                     genre = :genre,
                                     pseudo_discord = :pseudo_discord,
+                                    visibilite_utilisateur = :visibilite_utilisateur,
+                                    followers_utilisateur = :followers_utilisateur,
                                     ip_dernier_activite = :ip_dernier_activite,
                                     date_dernier_activite = :date_dernier_activite
                                 WHERE id_utilisateur = :id_utilisateur AND pseudo = :pseudo
@@ -289,6 +298,12 @@ class UtilisateurDAO extends DB{
             $res->bindParam(':genre', $genre, PDO::PARAM_STR);
             $pseudo_discord = $utilisateur->getPseudoDiscord();
             $res->bindParam(':pseudo_discord', $pseudo_discord, PDO::PARAM_STR);
+
+            $visibilite_utilisateur = $utilisateur->getVisibiliteUtilisateur();
+            $res->bindParam(':visibilite_utilisateur', $visibilite_utilisateur, PDO::PARAM_STR);
+            $followers_utilisateur = $utilisateur->getFollowersUtilisateur();
+            $res->bindParam(':followers_utilisateur', $followers_utilisateur, PDO::PARAM_STR);
+
             $ip_dernier_activite = $ip;
             $res->bindParam(':ip_dernier_activite', $ip_dernier_activite, PDO::PARAM_STR);
             $date_dernier_activite = $time;
@@ -311,7 +326,6 @@ class UtilisateurDAO extends DB{
     }
 
     public function edit_profil_password__async($arrayInfo){
-        $db = $this->connexion();
 
         if (isset($arrayInfo) && !empty($arrayInfo['id'])){
             $unUtilisateur = $this->findUtilisateurNoOjbet($arrayInfo['id']);
@@ -326,7 +340,7 @@ class UtilisateurDAO extends DB{
             if (isset($arrayInfo) && !empty($arrayInfo['old_password'])){
                 $old_password = sha1($arrayInfo['old_password']);
                 if ($old_password === $unUtilisateur[0]['mot_de_passe']){
-                    $res = $db->prepare("UPDATE utilisateur 
+                    $res = $this->db->prepare("UPDATE utilisateur 
                                   SET mot_de_passe = :mot_de_passe
                                 WHERE id_utilisateur = :id_utilisateur
                             ");
@@ -360,7 +374,6 @@ class UtilisateurDAO extends DB{
      * @return bool
      */
     public function updateJoueur(Utilisateur $utilisateur){
-        $db = $this->connexion();
 
         $unUtilisateur = $this->findUtilisateur($utilisateur);
 
@@ -371,13 +384,13 @@ class UtilisateurDAO extends DB{
             $ip = get_ip();
             $time = date("Y-m-d H:i:s");
 
-            $res = $db->prepare("UPDATE utilisateur 
+            $res = $this->db->prepare("UPDATE utilisateur 
                                   SET pseudo = :pseudo,
                                     email = :email,
                                     nom = :nom,
                                     prenom = :prenom,
                                     genre = :genre,
-                                    photo_profil = :photo_profil,
+                                    id_image_utilisateur = :id_image_utilisateur,
                                     note = :note,
                                     pseudo_discord = :pseudo_discord,
                                     ip_dernier_activite = :ip_dernier_activite,
@@ -390,7 +403,7 @@ class UtilisateurDAO extends DB{
             $res->bindParam(':nom', $utilisateur->getNom(), PDO::PARAM_STR);
             $res->bindParam(':prenom', $utilisateur->getPrenom(), PDO::PARAM_STR);
             $res->bindParam(':genre', $utilisateur->getGenre(), PDO::PARAM_STR);
-            $res->bindParam(':photo_profil', $utilisateur->getPhotoProfil(), PDO::PARAM_STR);
+            $res->bindParam(':id_image_utilisateur', $utilisateur->getIdImageUtilisateur(), PDO::PARAM_INT);
             $res->bindParam(':note', $utilisateur->getNote(), PDO::PARAM_STR);
             $res->bindParam(':pseudo_discord', $utilisateur->getPseudoDiscord(), PDO::PARAM_STR);
             $res->bindParam(':ip_dernier_activite', $ip, PDO::PARAM_STR);
@@ -417,7 +430,6 @@ class UtilisateurDAO extends DB{
      * @return bool
      */
     public function deleteJoueur(Utilisateur $utilisateur){
-        $db = $this->connexion();
 
         $unUtilisateur = $this->findUtilisateur($utilisateur);
 
@@ -425,7 +437,7 @@ class UtilisateurDAO extends DB{
             return false;
         }else{
 
-            $res = $db->prepare("DELETE FROM utilisateur WHERE id_utilisateur = :id_utilisateur AND pseudo = :pseudo");
+            $res = $this->db->prepare("DELETE FROM utilisateur WHERE id_utilisateur = :id_utilisateur AND pseudo = :pseudo");
 
             $res->bindParam(':id_utilisateur', $utilisateur->getId(), PDO::PARAM_INT);
             $res->bindParam(':pseudo', $utilisateur->getPseudo(), PDO::PARAM_STR);
@@ -448,9 +460,8 @@ class UtilisateurDAO extends DB{
      */
 
     public function findUtilisateur(Utilisateur $utilisateur){
-        $db = $this->connexion();
 
-        $res = $db->prepare("SELECT * FROM utilisateur WHERE id_utilisateur = :id_utilisateur OR pseudo = :pseudo OR email = :email");
+        $res = $this->db->prepare("SELECT * FROM utilisateur WHERE id_utilisateur = :id_utilisateur OR pseudo = :pseudo OR email = :email");
 
         $id_utilisateur = $utilisateur->getId();
         $res->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
@@ -464,18 +475,42 @@ class UtilisateurDAO extends DB{
         return $res->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function findUtilisateurNoOjbet($identificateur){
-        $db = $this->connexion();
+    public function findUtilisateurNoOjbet($identificateur, $type = 'all', $object = false){
 
-        $res = $db->prepare("SELECT * FROM utilisateur WHERE id_utilisateur = '{$identificateur}' OR pseudo = '{$identificateur}' OR email = '{$identificateur}'");
+        $supplies = "";
 
-        $res->bindParam(':id_utilisateur', $identificateur, PDO::PARAM_INT);
-        $res->bindParam(':pseudo', $identificateur, PDO::PARAM_STR);
-        $res->bindParam(':email', $identificateur, PDO::PARAM_STR);
+        if ($type === "id_utilisateur"){
+            $supplies = "WHERE id_utilisateur = :id_utilisateur";
+        }elseif($type === "pseudo"){
+            $supplies = "WHERE pseudo = :pseudo";
+        }elseif($type === "email"){
+            $supplies = "WHERE email = :email";
+        }else{
+            $supplies = "WHERE id_utilisateur = :id_utilisateur OR pseudo = :pseudo OR email = :email";
+        }
+
+        $res = $this->db->prepare("SELECT * FROM utilisateur " . $supplies);
+
+        if ($type === "id_utilisateur"){
+            $res->bindParam(':id_utilisateur', $identificateur, PDO::PARAM_INT);
+        }elseif($type === "pseudo"){
+            $res->bindParam(':pseudo', $identificateur, PDO::PARAM_STR);
+        }elseif($type === "email"){
+            $res->bindParam(':email', $identificateur, PDO::PARAM_STR);
+        }else{
+            $res->bindParam(':id_utilisateur', $identificateur, PDO::PARAM_INT);
+            $res->bindParam(':pseudo', $identificateur, PDO::PARAM_STR);
+            $res->bindParam(':email', $identificateur, PDO::PARAM_STR);
+        }
 
         $res->execute();
 
-        return $res->fetchAll();
+        if ($object === true){
+            return $res->fetchAll(PDO::FETCH_OBJ);
+        }else{
+            return $res->fetchAll();
+        }
+
     }
 
     /**
@@ -490,13 +525,188 @@ class UtilisateurDAO extends DB{
      */
 
     public function getListUtilisateur($type = 'array'){
-        $db = $this->connexion();
 
-        $res = $db->query("SELECT * FROM utilisateur");
+        $res = $this->db->query("SELECT * FROM utilisateur");
         if ($type == 'object'){
             return $res->fetchAll(PDO::FETCH_OBJ);
         }else{
             return $res->fetchAll(PDO::FETCH_ASSOC);
         }
     }
+
+    public function uplodImage($dataArray, $new = false){
+        $use_default = false;
+        $blob = 0;
+        if(!empty($dataArray['name'])){
+
+            $fileName = $dataArray['name'];
+            $fileTmpName = $dataArray['tmp_name'];
+            $fileSize = $dataArray['size'];
+            $fileError = $dataArray['error'];
+            $fileType = $dataArray['type'];
+
+            if (!empty($fileName) && !empty($fileTmpName) && !empty($fileSize) && !empty($fileType)){
+                $fileExt = explode(".", $fileName);
+                $fileActualExt = strtolower(end($fileExt));
+
+                $allowed = array("jpg", "jpeg", "png");
+
+                if (in_array($fileActualExt, $allowed)){
+                    if ($fileError === 0){
+                        if ($fileError < 1000000){
+
+                            $use_default = false;
+                            $blob = 1;
+
+                        }else{
+                            return ["error" => true, "status" => "heavy", "message" => "Votre image est trop lourd !"];
+                            //header("Location: ../../inscription.php?errorBigFile=true");
+                        }
+                    }else{
+                        return ["error" => true, "status" => "upload", "message" => "Une erreur est survenue lors de l'excution de l'action !"];
+                        //header("Location: ../../inscription.php?errorUpload=true");
+                    }
+                }else{
+                    //header("Location: ../../inscription.php?error=true");
+                    return ["error" => true, "status" => "no_support", "message" => "Votre image n'est pas supporter"];
+                }
+            }else{
+                $use_default = true;
+                $blob = 0;
+                if (preg_match("https:\/\/", $dataArray['photo-profil-default'])){
+                    $path = $dataArray['photo-profil-default'];
+                }else{
+                    $path = $dataArray['photo-default'];
+                }
+            }
+        }else{
+            $use_default = true;
+            $blob = 0;
+            if (preg_match("/https:\/\//", $dataArray['photo-profil-default']) || preg_match("/http:\/\//", $dataArray['photo-profil-default'])){
+                $path = $dataArray['photo-profil-default'];
+            }else{
+                $path = $dataArray['photo-default'];
+            }
+        }
+
+        if ($new === true){
+
+            (isset($dataArray['id'])) ? $name = $dataArray['id'] : $name = $this->findUtilisateurNoOjbet($dataArray['id'])[0]['pseudo'];
+
+            $description = "Phote de profil de " . $name;
+
+            if ($use_default === false){
+
+                $res = $this->db->prepare("INSERT INTO img_user (nom_d_origine, description, image, extension, taille, `blob`)
+                                        VALUES (:nom_d_origine, :description, :image, :extension, :taille, :blob)");
+            }else{
+                $res = $this->db->prepare("INSERT INTO img_user (description, extension, `blob`, path) 
+                                           VALUES (:description, :extension, :blob, :path)");
+            }
+        }else{
+            if ($use_default === false){
+
+                $res = $this->db->prepare("UPDATE img_user
+                                           SET nom_d_origine = :nom_d_origine, image = :image, extension = :extension, taille = :taille, `blob` = :blob
+                                           WHERE id_image = :id_image");
+            }else{
+
+                $res = $this->db->prepare("UPDATE img_user 
+                                           SET extension = :extension, `blob` = :blob, path = :path
+                                           WHERE id_image = :id_image");
+            }
+        }
+
+        if ($new === true){
+            $res->bindParam(':description', $description, PDO::PARAM_STR);
+        }else{
+            $id_image = $this->findUtilisateurNoOjbet($dataArray['id'])[0]['id_image_utilisateur'];
+            $res->bindParam(':id_image', $id_image, PDO::PARAM_STR);
+        }
+
+        if ($use_default === false){
+            $image =  file_get_contents($dataArray['tmp_name']);
+
+            $res->bindParam(':nom_d_origine', $fileName, PDO::PARAM_STR);
+
+            $res->bindParam(':image', $image, PDO::PARAM_STR);
+            $res->bindParam(':extension', $fileType, PDO::PARAM_STR);
+            $res->bindParam(':taille', $fileSize, PDO::PARAM_INT);
+            $res->bindParam(':blob', $blob, PDO::PARAM_INT);
+        }else{
+            $fileType = 'url';
+
+            $res->bindParam(':extension', $fileType, PDO::PARAM_STR);
+            $res->bindParam(':blob', $blob, PDO::PARAM_INT);
+            $res->bindParam(':path', $path, PDO::PARAM_STR);
+        }
+
+        $res->execute();
+
+        if ($res === false){
+            return ["error" => true, "status" => "no_uplod_in_database", "message" => "Une erreur est survenue lors de l'excution de l'action !"];
+        }else{
+            if ($new === true){
+                $getImage = $this->getImageUtilisateur(0, true);
+                (isset($getImage) && !empty($getImage) && !empty($getImage[0]['id_image'])) ? $id = $getImage[0]['id_image'] : $id = null;
+
+                return ["error" => false, "status" => "success_uplod", "id_image" => $id, "message" => "..."];
+            }else{
+                return ["error" => false, "status" => "success_uplod", "message" => "Votre image à était mise à jour !"];
+            }
+        }
+
+    }
+
+    public function getImageUtilisateur($identificateur = 0, $last = false){
+
+        $supplies = "";
+
+        $i = $this->db->query("SELECT MAX(id_image) FROM img_user");
+
+        $j = $i->fetchAll();
+
+        if ($j[0][0] !== null){
+            if ($last === true){
+                $supplies .= "WHERE id_image = {$j[0][0]}";
+            }elseif (!empty($identificateur)){
+                $supplies .= "WHERE id_image = :id_image";
+            }
+
+            $res = $this->db->prepare("SELECT * FROM img_user " . $supplies);
+
+            if (!empty($identificateur)){
+                $res->bindParam(':id_image', $identificateur, PDO::PARAM_INT);
+            }
+
+            $res->execute();
+
+            return $res->fetchAll();
+        }else{
+            return null;
+        }
+    }
+
+    public function changeNotificationActivite($bool, $id_utilisateur){
+
+        $exist_user = $this->findUtilisateurNoOjbet($id_utilisateur);
+
+        if (isset($exist_user) && !empty($exist_user)){
+
+            $res = $this->db->prepare("UPDATE utilisateur SET notification_activite = :notification_activite WHERE id_utilisateur = :id_utilisateur");
+
+            $res->bindParam(':notification_activite', $bool, PDO::PARAM_INT);
+            $res->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
+
+            if ($res->execute() === true){
+                return ["error" => false, "message" => "Les modifications que vous avez demandé où tu étais effectué."];
+            }else{
+                return ["error" => true, "message" => "Une erreur est survenue lors de l'exécution de l'action."];
+            }
+        }else{
+            return ["error" => true, "message" => "L'utilisateur que vous essayez de modifier les informations n'existe pas."];
+        }
+
+    }
+
 }

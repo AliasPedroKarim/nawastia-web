@@ -7,9 +7,14 @@
  */
 
 function varDum($array){
-    echo '<pre>';
-    var_dump($array);
-    echo '</pre>';
+    $array = func_get_args();
+    echo '<div class="bg-white p-3 text-black" style="z-index: 99999999;">';
+    foreach ($array as $v){
+        echo '<pre>';
+        var_dump($v);
+        echo '</pre>';
+    }
+    echo '</div>';
 }
 
 function chargerClass($class){
@@ -37,12 +42,31 @@ function get_ip() {
     }
 }
 
-function getDefaulftDateTime($date_time){
+function getDefaulftDateTime($date_time, $html_time = false){
     try {
         $date = new DateTime($date_time);
     } catch (Exception $e) {
     }
-    return $date->format('d/m/Y') . " à " . $date->format('H:i');
+    if ($html_time === true){
+        return $date->format('Y-m-d');
+    }else{
+        return $date->format('d/m/Y') . " à " . $date->format('H:i');
+    }
+}
+
+function pluralize( $count, $text ){
+    return $count . ( ( $count == 1 ) ? ( " $text" ) : ( " ${text}s" ) );
+}
+
+function ago( $datetime ){
+    $interval = date_create('now')->diff( $datetime );
+    $suffix = ( $interval->invert ? ' ' : '' );
+    if ( $v = $interval->y >= 1 ) return pluralize( $interval->y, 'année' ) . $suffix;
+    if ( $v = $interval->m >= 1 ) return pluralize( $interval->m, 'mois' ) . $suffix;
+    if ( $v = $interval->d >= 1 ) return pluralize( $interval->d, 'jours' ) . $suffix;
+    if ( $v = $interval->h >= 1 ) return pluralize( $interval->h, 'h' ) . $suffix;
+    if ( $v = $interval->i >= 1 ) return pluralize( $interval->i, 'mn' ) . $suffix;
+    return pluralize( $interval->s, 's' ) . $suffix;
 }
 
 $activeSaut = true;
@@ -67,7 +91,6 @@ function allRole(\App\Utilisateur\UtilisateurDAO $utilisateurDAO, $userIdSession
         if (isset($_SESSION['_1'])){
             $allRole = $utilisateurDAO->getAllRole($userIdSession);
         }
-
         return $allRole;
     }
 }

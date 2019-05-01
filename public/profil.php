@@ -8,7 +8,9 @@
 
 use App\Main\Main;
 use App\Main\MainSecurity;
+use App\Utilisateur\AmisDAO;
 use App\Utilisateur\UtilisateurDAO;
+use App\Activite\ActiviteDAO;
 
 require_once 'inc/function.php';
 
@@ -17,15 +19,15 @@ if (empty($_SESSION)){
 }
 
 $utilisateurDAO = new UtilisateurDAO();
+$amisDAO = new AmisDAO();
 
 $displaySecure = new MainSecurity();
+$activite = new ActiviteDAO();
+
 
 $title =  $debug . "Profile - " . $_SESSION['_1']->getPseudo() . $main_name_web;
 
 $userIdSession = $_SESSION['_1']->getId();
-
-//Get the status and decode the JSON
-$status = json_decode(file_get_contents('https://api.mcsrvstat.us/1/play.jaime-la-survie.com')); //nawa.mcpe.eu:19145
 
 $allRole = allRole($utilisateurDAO, $userIdSession);
 
@@ -33,16 +35,23 @@ $main = new Main();
 
 require_once 'inc/pre-load-function.php';
 
+$utilisateurDAOforimg = new UtilisateurDAO();
+
+$infoImageProfle = infoImage($utilisateurDAOforimg);
+
+$allUtilisateur = $utilisateurDAO->getListUtilisateur('object');
+
 ?><!DOCTYPE html>
 <html lang="en">
-    <?php require_once 'inc/partie/head.php'; ?>
-    <body style="background-image: url('assets/img/background/bg-test.jpg');" class="pb-2">
-        <div style="width: 100%; height: 100vh; background-color: rgba(0,0,0,.25); z-index: -1; position: absolute;"></div>
+    <?php require_once 'inc/partie/main/head.php'; ?>
+    <body class="pb-2 scrollbar style-7" style="background: url(<?= $main_bg ?>) fixed;">
+        <div class="dark-blur"></div>
 
             <?php require_once 'inc/partie/profil/notification.php'; ?>
             <?php require_once 'inc/partie/profil/search.php'; ?>
             <?php require_once 'inc/partie/modal-info.php'; ?>
             <?php require_once 'inc/partie/navbar-main.php'; ?>
+            <?php require_once 'inc/partie/modal-info_serveur.php'; ?>
 
         <div class="container-fluid padding-header-top-default">
             <?php //require_once 'inc/partie/navbar-linear.php'; ?>
@@ -62,7 +71,6 @@ require_once 'inc/pre-load-function.php';
                         }else{
                             $bg_profil = $_SESSION['_1']->getBgProfil();
                         }
-
                         ?>
 
                         <!-- Image -->
@@ -79,7 +87,7 @@ require_once 'inc/pre-load-function.php';
 
                                         <!-- Avatar -->
                                         <div class="avatar avatar-xxl header-avatar-top">
-                                            <img src="<?= $_SESSION['_1']->getPhotoProfil(); ?>" alt="..." class="avatar-img rounded-circle border border-4 border-body">
+                                            <img src="<?= isset($infoImageProfle) && $infoImageProfle[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $infoImageProfle[0]['path']; ?>" alt="..." class="avatar-img rounded-circle">
                                         </div>
 
                                     </div>
@@ -157,7 +165,7 @@ require_once 'inc/pre-load-function.php';
 
                     <br>
                     <div class="container-fluid tab-content">
-                        <div class="tab-pane fade " id="new-activites" role="tabpanel" aria-labelledby="new-activites-tab">
+                        <div class="tab-pane fade show active" id="new-activites" role="tabpanel" aria-labelledby="new-activites-tab">
                             <?php require_once 'inc/partie/profil/new-activites.php'?>
                         </div>
 
@@ -173,7 +181,7 @@ require_once 'inc/pre-load-function.php';
                             <?php require_once 'inc/partie/profil/amis.php'?>
                         </div>
 
-                        <div class="tab-pane fade show active" id="profil-edit" role="tabpanel" aria-labelledby="profil-edit-tab">
+                        <div class="tab-pane fade" id="profil-edit" role="tabpanel" aria-labelledby="profil-edit-tab">
                             <?php require_once 'inc/partie/profil/edit.php'; ?>
                         </div>
 
@@ -188,17 +196,27 @@ require_once 'inc/pre-load-function.php';
                 </div>
             </div>
         </div>
+        <!-- BS JavaScript -->
+        <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+        <script type="text/javascript" src="assets/js/edit_profil.js"></script>
+        <div class="script_edit_reaction">
+            <script type="text/javascript" src="assets/js/edit_reaction.js"></script>
+        </div>
+        <div class="script_add_comment">
+            <script type="text/javascript" src="assets/js/add_comment.js"></script>
+        </div>
+        <div class="script_manage_friend">
+            <script type="text/javascript" src="assets/js/manage_friend.js"></script>
+        </div>
+        <div class="script_manage_notification">
+            <script type="text/javascript" src="assets/js/manage_notification.js"></script>
+        </div>
+        <!-- Have fun using Bootstrap JS -->
+        <script type="text/javascript">
 
+        </script>
+        <script type="text/javascript" src="assets/js/main.js"></script>
+        <script type="text/javascript" src="assets/js/custom/chart-custom.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     </body>
-    <!-- jQuery -->
-    <script type="text/javascript" src="assets/js/jquery/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="assets/js/jquery/jquery-1.11.0.js"></script>
-    <!-- BS JavaScript -->
-    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
-    <!-- Have fun using Bootstrap JS -->
-    <script type="text/javascript">
-
-    </script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 </html>

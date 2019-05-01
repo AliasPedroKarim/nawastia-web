@@ -277,6 +277,7 @@
                                                     </li>
                                                     <li class="exigence-2">
                                                         Au moins un caractère spécial
+                                                        <code class="badge badge-soft-primary">!@#$%^&*()_+-=\[]{};':"\|,.<>\/?</code>
                                                     </li>
                                                     <li class="exigence-3">
                                                         Au moins un numéro
@@ -355,7 +356,7 @@
                         </div>
 
                         <div class="tab-pane fade" id="profil-edit-profil" role="tabpanel" aria-labelledby="profil-edit-profil-tab">
-                            <form class="mb-4 mt-4" method="post">
+                            <form id="form_edit_profil_avatar" action="inc/traitement/profil/edit_profil__async.php" enctype="multipart/form-data" class="mb-4 mt-4" method="post">
 
                                 <div class="row">
                                     <div class="col-12 col-md-12">
@@ -364,12 +365,13 @@
 
                                             <!-- Label -->
 
-                                            <div class="preview-img border-1 border-secondary" id="p-img" style="background-image: url('<?= $_SESSION['_1']->getPhotoProfil(); ?>'); width: 300px; height: 300px; box-shadow: unset;" >
+                                            <div class="preview-img border-1 border-secondary" id="p-img" style="background-image: url('<?= isset($infoImageProfle) && $infoImageProfle[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $infoImageProfle[0]['path']; ?>'); width: 300px; height: 300px; box-shadow: unset;" >
                                                 <label for="photo-profil__edit" class="label-img d-flex justify-content-center align-items-center" style=" width: 300px; height: 300px;">
                                                     <i class="fe fe-edit-2" style="color: white; font-size: 6.0em;"></i>
                                                 </label>
                                             </div>
                                             <input type="hidden" name="profil-default" value="http://cravatar.eu/helmhead/Nawarious/128.png">
+                                            <input type="hidden" name="id" id="id_photo-profil__edit" value="<?= $displaySecure->format_charac((isset($_SESSION['_1']) && !empty($_SESSION['_1'])) ? $_SESSION['_1']->getId() : "") ?>">
                                             <input type="file" class="form-control" id="photo-profil__edit" name="photo-profil" aria-describedby="inputGroupPrepend" style="display: none;" onchange="document.getElementById('p-img').style.backgroundImage = `url('${window.URL.createObjectURL(this.files[0])}')`">
 
 
@@ -393,7 +395,7 @@
                                             </label>
 
                                             <!-- Input -->
-                                            <input type="text" id="photo-profil-default__edit" name="photo-profil-default" class="form-control" placeholder="http://url..." value="<?= $_SESSION['_1']->getPhotoProfil(); ?>">
+                                            <input type="text" id="photo-profil-default__edit" name="photo-profil-default" class="form-control" placeholder="http://url..." value="<?= isset($infoImageProfle) && $infoImageProfle[0]['blob'] == 1 ? $infoImageProfle[0]['nom_d_origine'] : $infoImageProfle[0]['path']; ?>">
 
                                         </div>
 
@@ -401,7 +403,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <button type="submit" name="edit_profil_avatar" id="edit_profil_avatar__edit" attr_encrypt='<?= base64_encode("../../inc/traitement/profil/edit_profil__async.php") ?>' class="btn btn-primary">
+                                    <button type="submit" value="true" name="edit_profil_avatar" id="edit_profil_avatar__edit" attr_encrypt='<?= base64_encode("../../inc/traitement/profil/edit_profil__async.php") ?>' class="btn btn-primary">
                                         Mettre à jour
                                     </button>
                                 </div>
@@ -410,7 +412,7 @@
                         </div>
 
                         <div class="tab-pane fade" id="profil-edit-notification" role="tabpanel" aria-labelledby="profil-edit-notification-tab">
-                            <form class="mb-4">
+                            <form class="mb-4" id="edit_profil_notification" method="post" action="<?= base64_encode("../../inc/traitement/profil/edit_profil__async.php") ?>">
 
                                 <!-- Divider -->
                                 <hr class="mt-4 mb-5">
@@ -423,21 +425,21 @@
 
                                             <!-- Label -->
                                             <label class="mb-1">
-                                                Public profile
+                                                Notification des activités
                                             </label>
 
                                             <!-- Form text -->
                                             <small class="form-text text-muted">
-                                                Making your profile public means that anyone on the Dashkit network will be able to find you.
+                                                En activant cette option, vous serez notifié lorsqu'il y aura de nouvelle activité.
                                             </small>
 
-                                            <div class="row">
+                                            <div class="row mt-3">
                                                 <div class="col-auto">
 
                                                     <!-- Switch -->
                                                     <div class="custom-control custom-switch">
-                                                        <input type="checkbox" class="custom-control-input" id="switchOne-notification">
-                                                        <label class="custom-control-label" for="switchOne-notification"></label>
+                                                        <input type="checkbox" class="switch-notification-activite custom-control-input" id="notification_activite__edit" name="notification_activite__edit" <?= (isset($_SESSION['_1']) && $_SESSION['_1']->getNotificationActivite() == 1) ? "checked" : "" ?>>
+                                                        <label class="custom-control-label" for="notification_activite__edit"></label>
                                                     </div>
 
                                                 </div>
@@ -455,43 +457,16 @@
                                     </div>
                                     <div class="col-12 col-md-6">
 
-                                        <!-- Allow for additional Bookings -->
-                                        <div class="form-group">
-
-                                            <!-- Label -->
-                                            <label class="mb-1">
-                                                Allow for additional Bookings
-                                            </label>
-
-                                            <!-- Form text -->
-                                            <small class="form-text text-muted">
-                                                If you are available for hire outside of the current situation, you can encourage others to hire you.
-                                            </small>
-
-                                            <div class="row">
-                                                <div class="col-auto">
-
-                                                    <!-- Switch -->
-                                                    <div class="custom-control custom-switch">
-                                                        <input type="checkbox" class="custom-control-input" id="switchTwo-notification">
-                                                        <label class="custom-control-label" for="switchTwo-notification"></label>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col ml-n2">
-
-                                                    <!-- Help text -->
-                                                    <small class="text-muted">
-                                                        You're currently available
-                                                    </small>
-
-                                                </div>
-                                            </div> <!-- / .row -->
-                                        </div>
+                                        &nbsp;
 
                                     </div>
                                 </div> <!-- / .row -->
 
+                                <div class="row">
+                                    <button type="submit" value="true" name="edit_profil_notification_submit" id="edit_profil_notification_submit__edit" class="btn btn-primary">
+                                        Mettre à jour
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le :  Dim 21 avr. 2019 à 21:13
+-- Généré le :  mer. 24 avr. 2019 à 07:02
 -- Version du serveur :  10.3.12-MariaDB
 -- Version de PHP :  7.2.14
 
@@ -345,7 +345,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id_utilisateur`, `pseudo`, `email`, `nom`, `prenom`, `mot_de_passe`, `genre`, `photo_profil`, `money`, `note`, `bg_profil`, `pseudo_discord`, `visibilite_utilisateur`, `followers_utilisateur`, `notification_activite`, `date_creation_compte`, `date_dernier_activite`, `ip_creation_compte`, `ip_dernier_activite`) VALUES
-(4, 'PedroKarim64', 'admin@admin.fr', 'admin', 'admin', '6a33d91000fb91f8719900990ca33e99c714a36d', 'homme', 'assets/img/user-avatar/ProfileAvatar-id-PedroKarim64.jpg', 0, 'aucune note', 'https://i.kinja-img.com/gawker-media/image/upload/crhrwhnfzizwj9pqilvf.png', 'PedroKarim64#0001', 1, 1, 1, '2019-02-27 18:01:41', '2019-04-21 16:58:45', '[::1]', '[::1]'),
+(4, 'PedroKarim64', 'admin@admin.fr', 'admin', 'admin', '880836d4ebd089deda4517cffc8021be13895420', 'homme', 'assets/img/user-avatar/ProfileAvatar-id-PedroKarim64.jpg', 0, 'aucune note', 'https://i.kinja-img.com/gawker-media/image/upload/crhrwhnfzizwj9pqilvf.png', 'PedroKarim64#0001', 1, 1, 1, '2019-02-27 18:01:41', '2019-04-23 23:37:53', '[::1]', '::1'),
 (5, 'admin', 'admin1@admin.fr', 'admin', 'admin', '6a33d91000fb91f8719900990ca33e99c714a36d', 'homme', 'assets/img/user-avatar/ProfileAvatar-id-admin.jpg', 0, 'aucune note', NULL, 'test#0001', 1, 1, 1, '2019-04-15 00:28:50', '2019-04-20 23:25:03', '[::1]', '[::1]');
 
 --
@@ -413,7 +413,7 @@ ALTER TABLE `possede_image`
 ALTER TABLE `possede_reaction`
   ADD CONSTRAINT `possede_reaction_ibfk_1` FOREIGN KEY (`id_activite_reaction`) REFERENCES `activite` (`id_activite`),
   ADD CONSTRAINT `possede_reaction_ibfk_2` FOREIGN KEY (`id_reaction`) REFERENCES `reaction` (`id_reaction`),
-  ADD CONSTRAINT `possede_reaction_ibfk_3` FOREIGN KEY (`id_jutilisateur_reaction`) REFERENCES `utilisateur` (`id_utilisateur`);
+  ADD CONSTRAINT `possede_reaction_ibfk_3` FOREIGN KEY (id_utilisateur_reaction) REFERENCES `utilisateur` (`id_utilisateur`);
 
 --
 -- Contraintes pour la table `possede_role`

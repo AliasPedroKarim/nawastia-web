@@ -6,56 +6,42 @@
  * Time: 23:53
  */
 
+use App\Main\Main;
 use App\Utilisateur\UtilisateurDAO;
 
 require_once 'inc/function.php';
-require_once 'inc/pre-load-function.php';
 
 $title =  $debug . "Accueil" . $main_name_web;
 
-//Get the status and decode the JSON
-$status = json_decode(file_get_contents('https://api.mcsrvstat.us/1/play.jaime-la-survie.com')); //nawa.mcpe.eu:19145
-
 $utilisateurDAO = new UtilisateurDAO();
 
-isset( $_SESSION['_1']) ? $userIdSession = $_SESSION['_1']->getId() : $userIdSession = null;
+isset($_SESSION['_1']) ? $userIdSession = $_SESSION['_1']->getId() : $userIdSession = null;
 
 $allRole = allRole($utilisateurDAO, $userIdSession);
 
+$main = new Main();
+
 require_once 'inc/pre-load-function.php';
 
-$navbar_status_admin = false;
+$utilisateurDAOforimg = new UtilisateurDAO();
 
-if (isset($_SESSION['_1'])){
-    if (isset($allRole) || !empty($allRole)){
-        foreach($allRole as $value){
-            $role = $utilisateurDAO->findRole($value->id_status);
-            if ($role[0]->role == "op" ||
-                $role[0]->role == "fonda" ||
-                $role[0]->role == "admin" ||
-                $role[0]->role == "super-modo" ||
-                $role[0]->role == "dev"
-            ){
-                $navbar_status_admin = true;
-            }
-        }
-    }else{
-        $navbar_status_admin = false;
-    }
-}
+$infoImageProfle = infoImage($utilisateurDAOforimg);
+
+$navbar_status_admin = $main->isStaff($userIdSession);
 
 ?><!DOCTYPE html>
 <html lang="en">
-    <?php require_once 'inc/partie/head.php'; ?>
-    <body style="background-image: url('assets/img/background/bg-test.jpg');">
-        <div style="width: 100%; height: 100vh; background-color: rgba(0,0,0,.25); z-index: -1; position: absolute;"></div>
+    <?php require_once 'inc/partie/main/head.php'; ?>
+    <body style="background: url(<?= $main_bg ?>) fixed;">
+    <div class="dark-blur"></div>
 
         <!--<main class="covered-top-center full-center d-flex flex-column vh-100">
 
         </main>-->
 
-        <div class="container-fluid">
-            <?php require_once 'inc/partie/navbar-main.php'; ?>
+        <?php require_once 'inc/partie/navbar-main.php'; ?>
+
+        <div class="container-fluid p-0">
             <div class="container-fluid padding-header-top-default vh-100 d-flex align-items-center">
                 <div class="container-fluid">
                     <div class="col-md-8">
@@ -86,7 +72,7 @@ if (isset($_SESSION['_1'])){
                 </div>
             </div>
 
-            <?php require_once 'inc/partie/footer.php'; ?>
+            <?php require_once 'inc/partie/main/footer.php'; ?>
         </div>
 
     </body>

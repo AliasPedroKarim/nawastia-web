@@ -8,14 +8,18 @@
 
 require_once 'inc/function.php';
 
+if (isset($_SESSION['_1'])){
+    header("Location: /");
+}
+
 $title =  $debug . "Connexion" . $main_name_web;
 
 require_once 'inc/pre-load-function.php';
 
 ?><!DOCTYPE html>
 <html lang="en">
-    <?php require_once 'inc/partie/head.php'; ?>
-    <body style="background-image: url('assets/img/background/bg-test-1.png')">
+    <?php require_once 'inc/partie/main/head.php'; ?>
+    <body style="background: url(<?= $main_bg ?>) fixed ;">
 
         <div class="container">
             <div class="row">
@@ -26,7 +30,7 @@ require_once 'inc/pre-load-function.php';
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-body">
-                                    <form class="needs-validation" style="text-align: center;" method="post" action="inc/traitement/connexion-inscription.php" novalidate>
+                                    <form id="form_sign_in" class="needs-validation" style="text-align: center;" method="post" action="inc/traitement/connexion-inscription.php" novalidate>
 
                                         <div class="col-md-12 d-flex justify-content-between">
                                             <a href="\">
@@ -58,7 +62,7 @@ require_once 'inc/pre-load-function.php';
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                                                     </div>
-                                                    <input type="text" class="form-control" id="identificateur" name="identificateur" placeholder="Identifiant" aria-describedby="inputGroupPrepend" required>
+                                                    <input type="text" class="form-control" id="identificateur" name="identificateur" placeholder="Identifiant" aria-describedby="inputGroupPrepend">
                                                     <div class="invalid-feedback">
                                                         Veuillez s'il vous plait précisez un Nom D'utilisateur ou Email.
                                                     </div>
@@ -68,7 +72,7 @@ require_once 'inc/pre-load-function.php';
                                         <div class="form-row">
                                             <div class="col-md-12 mb-3">
                                                 <label for="motDePasse">Mot de passe</label>
-                                                <input type="password" class="form-control" id="motDePasse" name="motDePasse" placeholder="mot de passe" required>
+                                                <input type="password" class="form-control" id="motDePasse" name="motDePasse" placeholder="Mot de passe">
                                                 <div class="invalid-feedback">
                                                     Veuillez s'il vous plait donnez votre mot de passe.
                                                 </div>

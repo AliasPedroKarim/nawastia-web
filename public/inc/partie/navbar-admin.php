@@ -21,7 +21,7 @@
                 <!-- Toggle -->
                 <a href="#" id="sidebarIcon" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="avatar avatar-sm avatar-online">
-                        <img src="assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
+                        <img src="<?= isset($infoImageProfle) && $infoImageProfle[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $infoImageProfle[0]['path']; ?>" class="avatar-img rounded-circle" alt="...">
                     </div>
                 </a>
 
@@ -120,6 +120,25 @@
                             <div class="collapse" id="sidebarPages">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
+                                        <a href="#sidebarTeam" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTeam">
+                                            Acceuil
+                                        </a>
+                                        <div class="collapse " id="sidebarTeam">
+                                            <ul class="nav nav-sm flex-column">
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link ">
+                                                        Overview
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link ">
+                                                        <?= isset($debug) ? $debug : null ?>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
                                         <a href="#sidebarProfile" class="nav-link" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="sidebarProfile">
                                             Profile
                                         </a>
@@ -132,22 +151,7 @@
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="#" class="nav-link ">
-                                                        Groups
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link ">
-                                                        Projects
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link ">
-                                                        Files
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link ">
-                                                        Subscribers
+                                                        <?= isset($debug) ? $debug : null ?>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -155,7 +159,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a href="#sidebarProject" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProject">
-                                            Project
+                                            Aministration
                                         </a>
                                         <div class="collapse " id="sidebarProject">
                                             <ul class="nav nav-sm flex-column">
@@ -166,74 +170,15 @@
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="#" class="nav-link ">
-                                                        Files
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link ">
-                                                        Reports
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link ">
-                                                        New project
+                                                        <?= isset($debug) ? $debug : null ?>
                                                     </a>
                                                 </li>
                                             </ul>
                                         </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#sidebarTeam" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTeam">
-                                            Team
-                                        </a>
-                                        <div class="collapse " id="sidebarTeam">
-                                            <ul class="nav nav-sm flex-column">
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link ">
-                                                        Overview
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link ">
-                                                        Projects
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link ">
-                                                        Members
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link ">
-                                                        New team
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link ">
-                                            Orders
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link ">
-                                            Feed
-                                        </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#" class="nav-link ">
                                             Settings
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link ">
-                                            Invoice
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link ">
-                                            Pricing
                                         </a>
                                     </li>
                                 </ul>
@@ -258,12 +203,7 @@
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="#" class="nav-link">
-                                                        Illustration
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link">
-                                                        Basic
+                                                        <?= isset($debug) ? $debug : null ?>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -282,12 +222,7 @@
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="#" class="nav-link">
-                                                        Illustration
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link">
-                                                        Basic
+                                                        <?= isset($debug) ? $debug : null ?>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -306,12 +241,7 @@
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="#" class="nav-link">
-                                                        Illustration
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link">
-                                                        Basic
+                                                        <?= isset($debug) ? $debug : null ?>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -325,12 +255,12 @@
                                             <ul class="nav nav-sm flex-column">
                                                 <li class="nav-item">
                                                     <a href="#" class="nav-link">
-                                                        Illustration
+                                                        Console Log
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="#" class="nav-link">
-                                                        Basic
+                                                        <?= isset($debug) ? $debug : null ?>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -365,12 +295,12 @@
                     <div class="collapse " id="sidebarComponents">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="#" class="nav-link" data-toggle="modal" data-target="#info-server">
                                     Information
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="#" class="nav-link" data-toggle="modal" data-target="#status-server">
                                     Status
                                 </a>
                             </li>
@@ -399,10 +329,18 @@
             <div class="navbar-user d-none d-md-flex" id="sidebarUser">
 
                 <!-- Icon -->
-                <a href="#sidebarModalActivity" class="navbar-user-link" data-toggle="modal">
-                <span class="icon">
-                  <i class="fe fe-bell"></i>
-                </span>
+                <a href="#sidebarModalActivity" class="navbar-user-link position-relative notification-icon" data-toggle="modal">
+                    <span class="icon">
+                      <i class="fe fe-bell"></i>
+                    </span><?php
+
+                    if (isset($_SESSION) && !empty($_SESSION['_1'])):
+                        $notificationUtilisateur = $main->getStatus('notification', ["id_notifier" => $_SESSION['_1']->getId(), "id_status_notification" => 1]);
+                        if (!empty($notificationUtilisateur)):
+                            ?>
+                            <span class="popover-body-indicator bg-danger position-absolute top" style="top: 0px; right: 0px;"></span>
+                        <?php endif;
+                    endif; ?>
                 </a>
 
                 <!-- Dropup -->
@@ -411,7 +349,7 @@
                     <!-- Toggle -->
                     <a href="#" id="sidebarIconCopy" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="avatar avatar-sm avatar-online">
-                            <img src="<?= isset($_SESSION['_1']) ? $_SESSION['_1']->getPhotoProfil() : null?>" class="avatar-img rounded-circle" alt="...">
+                            <img src="<?= isset($infoImageProfle) && $infoImageProfle[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $infoImageProfle[0]['path']; ?>" class="avatar-img rounded-circle" alt="...">
                         </div>
                     </a>
 

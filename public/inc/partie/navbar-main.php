@@ -7,7 +7,8 @@
                 </a>
                 <div class="navbar-brand">
                     <a href="\" class="text-light">Nawastia</a>
-                    <span class="small-caractere">- <?= $status->players->online ?> joueurs connectés</span>
+
+                    <span class="small-caractere">- <?= isset($main) && isset($info_serveur_minecraft) && !isset($info_serveur_minecraft->offline) ? $info_serveur_minecraft->players->online . " joueurs connectés" : "Server offline"?></span>
                 </div>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#list-item" aria-controls="list-item" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +51,7 @@
                 <?php else: ?>
                     <li class="nav-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <a class="nav-link dropdown-toggle no-effect-hover" href="#">
-                            <div class="d-inline-block align-top" style="width: 40px; height: 40px; background-image: url('<?= $_SESSION['_1']->getPhotoProfil(); ?>'); background-size: cover; background-position: top center; border-radius: 50% 50%;">
+                            <div class="d-inline-block align-top" style="width: 40px; height: 40px; background-size: cover; background-position: top center; border-radius: 50% 50%; background-image: url('<?= isset($infoImageProfle) && $infoImageProfle[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $infoImageProfle[0]['path']; ?>');">
 
                             </div>
                         </a>

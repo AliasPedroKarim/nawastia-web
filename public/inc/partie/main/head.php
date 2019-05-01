@@ -13,7 +13,8 @@ isset($title) ? $title : $title = "Nawastia Web";
     <meta charset="UTF-8">
     <title><?= $title ?></title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css" >
+    <link rel="stylesheet" href="assets/css/style.css" id="stylesheetLight">
+    <link rel="stylesheet" href="assets/css/style.css" id="stylesheetDark">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" >
 
     <script type="text/javascript" src="assets/js/bootstrap.js"></script>
@@ -22,9 +23,7 @@ isset($title) ? $title : $title = "Nawastia Web";
 
     <link rel="stylesheet" href="assets/font/feather/feather.min.css">
 
-    <script src="assets/js/external-assets/Chart.min.js"></script>
     <script src="assets/js/external-assets/Chart.bundle.min.js"></script>
-    <script src="assets/js/theme.min.js"></script>
 
     <style type="text/css">
         /* Chart.js */
@@ -53,4 +52,8 @@ isset($title) ? $title : $title = "Nawastia Web";
         }
 
     </style>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="assets/js/jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="assets/js/jquery/jquery-1.11.0.js"></script>
 </head>

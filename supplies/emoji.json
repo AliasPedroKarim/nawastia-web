@@ -1,0 +1,467 @@
+[
+  {
+    "unicode": "1F600",
+    "emote_reaction": "😀",
+    "name_reaction": "grinning face"
+  },
+  {
+    "unicode": "1F603",
+    "emote_reaction": "😃",
+    "name_reaction": "grinning face with big eyes"
+  },
+  {
+    "unicode": "1F604",
+    "emote_reaction": "😄",
+    "name_reaction": "grinning face with smiling eyes"
+  },
+  {
+    "unicode": "1F601",
+    "emote_reaction": "😁",
+    "name_reaction": "beaming face with smiling eyes"
+  },
+  {
+    "unicode": "1F606",
+    "emote_reaction": "😆",
+    "name_reaction": "grinning squinting face"
+  },
+  {
+    "unicode": "1F605",
+    "emote_reaction": "😅",
+    "name_reaction": "grinning face with sweat"
+  },
+  {
+    "unicode": "1F923",
+    "emote_reaction": "🤣",
+    "name_reaction": "rolling on the floor laughing"
+  },
+  {
+    "unicode": "1F602",
+    "emote_reaction": "😂",
+    "name_reaction": "face with tears of joy"
+  },
+  {
+    "unicode": "1F642",
+    "emote_reaction": "🙂",
+    "name_reaction": "slightly smiling face"
+  },
+  {
+    "unicode": "1F643",
+    "emote_reaction": "🙃",
+    "name_reaction": "upside-down face"
+  },
+  {
+    "unicode": "1F609",
+    "emote_reaction": "😉",
+    "name_reaction": "winking face"
+  },
+  {
+    "unicode": "1F60A",
+    "emote_reaction": "😊",
+    "name_reaction": "smiling face with smiling eyes"
+  },
+  {
+    "unicode": "1F607",
+    "emote_reaction": "😇",
+    "name_reaction": "smiling face with halo"
+  },
+  {
+    "unicode": "1F970",
+    "emote_reaction": "🥰",
+    "name_reaction": "smiling face with hearts"
+  },
+  {
+    "unicode": "1F60D",
+    "emote_reaction": "😍",
+    "name_reaction": "smiling face with heart-eyes"
+  },
+  {
+    "unicode": "1F929",
+    "emote_reaction": "🤩",
+    "name_reaction": "star-struck"
+  },
+  {
+    "unicode": "1F618",
+    "emote_reaction": "😘",
+    "name_reaction": "face blowing a kiss"
+  },
+  {
+    "unicode": "1F617",
+    "emote_reaction": "😗",
+    "name_reaction": "kissing face"
+  },
+  {
+    "unicode": "263A",
+    "emote_reaction": "☺",
+    "name_reaction": "smiling face"
+  },
+  {
+    "unicode": "1F61A",
+    "emote_reaction": "😚",
+    "name_reaction": "kissing face with closed eyes"
+  },
+  {
+    "unicode": "1F619",
+    "emote_reaction": "😙",
+    "name_reaction": "kissing face with smiling eyes"
+  },
+  {
+    "unicode": "1F60B",
+    "emote_reaction": "😋",
+    "name_reaction": "face savoring food"
+  },
+  {
+    "unicode": "1F61B",
+    "emote_reaction": "😛",
+    "name_reaction": "face with tongue"
+  },
+  {
+    "unicode": "1F61C",
+    "emote_reaction": "😜",
+    "name_reaction": "winking face with tongue"
+  },
+  {
+    "unicode": "1F92A",
+    "emote_reaction": "🤪",
+    "name_reaction": "zany face"
+  },
+  {
+    "unicode": "1F61D",
+    "emote_reaction": "😝",
+    "name_reaction": "squinting face with tongue"
+  },
+  {
+    "unicode": "1F911",
+    "emote_reaction": "🤑",
+    "name_reaction": "money-mouth face"
+  },
+  {
+    "unicode": "1F917",
+    "emote_reaction": "🤗",
+    "name_reaction": "hugging face"
+  },
+  {
+    "unicode": "1F92D",
+    "emote_reaction": "🤭",
+    "name_reaction": "face with hand over mouth"
+  },
+  {
+    "unicode": "1F92B",
+    "emote_reaction": "🤫",
+    "name_reaction": "shushing face"
+  },
+  {
+    "unicode": "1F914",
+    "emote_reaction": "🤔",
+    "name_reaction": "thinking face"
+  },
+  {
+    "unicode": "1F910",
+    "emote_reaction": "🤐",
+    "name_reaction": "zipper-mouth face"
+  },
+  {
+    "unicode": "1F928",
+    "emote_reaction": "🤨",
+    "name_reaction": "face with raised eyebrow"
+  },
+  {
+    "unicode": "1F610",
+    "emote_reaction": "😐",
+    "name_reaction": "neutral face"
+  },
+  {
+    "unicode": "1F611",
+    "emote_reaction": "😑",
+    "name_reaction": "expressionless face"
+  },
+  {
+    "unicode": "1F636",
+    "emote_reaction": "😶",
+    "name_reaction": "face without mouth"
+  },
+  {
+    "unicode": "1F60F",
+    "emote_reaction": "😏",
+    "name_reaction": "smirking face"
+  },
+  {
+    "unicode": "1F612",
+    "emote_reaction": "😒",
+    "name_reaction": "unamused face"
+  },
+  {
+    "unicode": "1F644",
+    "emote_reaction": "🙄",
+    "name_reaction": "face with rolling eyes"
+  },
+  {
+    "unicode": "1F62C",
+    "emote_reaction": "😬",
+    "name_reaction": "grimacing face"
+  },
+  {
+    "unicode": "1F925",
+    "emote_reaction": "🤥",
+    "name_reaction": "lying face"
+  },
+  {
+    "unicode": "1F60C",
+    "emote_reaction": "😌",
+    "name_reaction": "relieved face"
+  },
+  {
+    "unicode": "1F614",
+    "emote_reaction": "😔",
+    "name_reaction": "pensive face"
+  },
+  {
+    "unicode": "1F62A",
+    "emote_reaction": "😪",
+    "name_reaction": "sleepy face"
+  },
+  {
+    "unicode": "1F924",
+    "emote_reaction": "🤤",
+    "name_reaction": "drooling face"
+  },
+  {
+    "unicode": "1F634",
+    "emote_reaction": "😴",
+    "name_reaction": "sleeping face"
+  },
+  {
+    "unicode": "1F637",
+    "emote_reaction": "😷",
+    "name_reaction": "face with medical mask"
+  },
+  {
+    "unicode": "1F912",
+    "emote_reaction": "🤒",
+    "name_reaction": "face with thermometer"
+  },
+  {
+    "unicode": "1F915",
+    "emote_reaction": "🤕",
+    "name_reaction": "face with head-bandage"
+  },
+  {
+    "unicode": "1F922",
+    "emote_reaction": "🤢",
+    "name_reaction": "nauseated face"
+  },
+  {
+    "unicode": "1F92E",
+    "emote_reaction": "🤮",
+    "name_reaction": "face vomiting"
+  },
+  {
+    "unicode": "1F927",
+    "emote_reaction": "🤧",
+    "name_reaction": "sneezing face"
+  },
+  {
+    "unicode": "1F975",
+    "emote_reaction": "🥵",
+    "name_reaction": "hot face"
+  },
+  {
+    "unicode": "1F976",
+    "emote_reaction": "🥶",
+    "name_reaction": "cold face"
+  },
+  {
+    "unicode": "1F974",
+    "emote_reaction": "🥴",
+    "name_reaction": "woozy face"
+  },
+  {
+    "unicode": "1F635",
+    "emote_reaction": "😵",
+    "name_reaction": "dizzy face"
+  },
+  {
+    "unicode": "1F92F",
+    "emote_reaction": "🤯",
+    "name_reaction": "exploding head"
+  },
+  {
+    "unicode": "1F920",
+    "emote_reaction": "🤠",
+    "name_reaction": "cowboy hat face"
+  },
+  {
+    "unicode": "1F973",
+    "emote_reaction": "🥳",
+    "name_reaction": "partying face"
+  },
+  {
+    "unicode": "1F60E",
+    "emote_reaction": "😎",
+    "name_reaction": "smiling face with sunglasses"
+  },
+  {
+    "unicode": "1F913",
+    "emote_reaction": "🤓",
+    "name_reaction": "nerd face"
+  },
+  {
+    "unicode": "1F9D0",
+    "emote_reaction": "🧐",
+    "name_reaction": "face with monocle"
+  },
+  {
+    "unicode": "1F615",
+    "emote_reaction": "😕",
+    "name_reaction": "confused face"
+  },
+  {
+    "unicode": "1F61F",
+    "emote_reaction": "😟",
+    "name_reaction": "worried face"
+  },
+  {
+    "unicode": "1F641",
+    "emote_reaction": "🙁",
+    "name_reaction": "slightly frowning face"
+  },
+  {
+    "unicode": "2639",
+    "emote_reaction": "☹",
+    "name_reaction": "frowning face"
+  },
+  {
+    "unicode": "1F62E",
+    "emote_reaction": "😮",
+    "name_reaction": "face with open mouth"
+  },
+  {
+    "unicode": "1F62F",
+    "emote_reaction": "😯",
+    "name_reaction": "hushed face"
+  },
+  {
+    "unicode": "1F632",
+    "emote_reaction": "😲",
+    "name_reaction": "astonished face"
+  },
+  {
+    "unicode": "1F633",
+    "emote_reaction": "😳",
+    "name_reaction": "flushed face"
+  },
+  {
+    "unicode": "1F97A",
+    "emote_reaction": "🥺",
+    "name_reaction": "pleading face"
+  },
+  {
+    "unicode": "1F626",
+    "emote_reaction": "😦",
+    "name_reaction": "frowning face with open mouth"
+  },
+  {
+    "unicode": "1F627",
+    "emote_reaction": "😧",
+    "name_reaction": "anguished face"
+  },
+  {
+    "unicode": "1F628",
+    "emote_reaction": "😨",
+    "name_reaction": "fearful face"
+  },
+  {
+    "unicode": "1F630",
+    "emote_reaction": "😰",
+    "name_reaction": "anxious face with sweat"
+  },
+  {
+    "unicode": "1F625",
+    "emote_reaction": "😥",
+    "name_reaction": "sad but relieved face"
+  },
+  {
+    "unicode": "1F622",
+    "emote_reaction": "😢",
+    "name_reaction": "crying face"
+  },
+  {
+    "unicode": "1F62D",
+    "emote_reaction": "😭",
+    "name_reaction": "loudly crying face"
+  },
+  {
+    "unicode": "1F631",
+    "emote_reaction": "😱",
+    "name_reaction": "face screaming in fear"
+  },
+  {
+    "unicode": "1F616",
+    "emote_reaction": "😖",
+    "name_reaction": "confounded face"
+  },
+  {
+    "unicode": "1F623",
+    "emote_reaction": "😣",
+    "name_reaction": "persevering face"
+  },
+  {
+    "unicode": "1F61E",
+    "emote_reaction": "😞",
+    "name_reaction": "disappointed face"
+  },
+  {
+    "unicode": "1F613",
+    "emote_reaction": "😓",
+    "name_reaction": "downcast face with sweat"
+  },
+  {
+    "unicode": "1F629",
+    "emote_reaction": "😩",
+    "name_reaction": "weary face"
+  },
+  {
+    "unicode": "1F62B",
+    "emote_reaction": "😫",
+    "name_reaction": "tired face"
+  },
+  {
+    "unicode": "1F971",
+    "emote_reaction": "🥱",
+    "name_reaction": "⊛ yawning face"
+  },
+  {
+    "unicode": "1F624",
+    "emote_reaction": "😤",
+    "name_reaction": "face with steam from nose"
+  },
+  {
+    "unicode": "1F621",
+    "emote_reaction": "😡",
+    "name_reaction": "pouting face"
+  },
+  {
+    "unicode": "1F620",
+    "emote_reaction": "😠",
+    "name_reaction": "angry face"
+  },
+  {
+    "unicode": "1F92C",
+    "emote_reaction": "🤬",
+    "name_reaction": "face with symbols on mouth"
+  },
+  {
+    "unicode": "1F608",
+    "emote_reaction": "😈",
+    "name_reaction": "smiling face with horns"
+  },
+  {
+    "unicode": "1F47F",
+    "emote_reaction": "👿",
+    "name_reaction": "angry face with horns"
+  },
+  {
+    "unicode": "1F480",
+    "emote_reaction": "💀",
+    "name_reaction": "skull"
+  }
+]

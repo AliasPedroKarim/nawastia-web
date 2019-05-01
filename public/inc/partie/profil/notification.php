@@ -1,261 +1,103 @@
+<?php $notification = new \App\Utilisateur\NotificationDAO(); ?>
+
 <!-- Modal: Activity -->
-<div class="modal fade text-dark" id="sidebarModalActivity" tabindex="-1" role="dialog" style="display: none;" aria-modal="false">
-    <div class="modal-dialog modal-dialog-vertical" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+<?php if (isset($_SESSION) && isset($_SESSION['_1'])):
+    $notificationUtilisateur = $main->getStatus('notification', ["id_notifier" => $_SESSION['_1']->getId(), "id_status_notification" => 1]);
+    ?>
 
-                <!-- Title -->
-                <h4 class="modal-title text-dark">
-                    Notifications
-                </h4>
+    <div class="modal fade text-dark" id="sidebarModalActivity" tabindex="-1" role="dialog" style="display: none;" aria-modal="false">
+        <div class="modal-dialog modal-dialog-vertical" role="document" id="notification">
+            <div class="modal-content">
+                <div class="modal-header">
 
-                <!-- Close -->
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <!-- Title -->
+                    <h4 class="modal-title text-dark">
+                        Notifications <?= count($notificationUtilisateur) > 0 ? "<span class='badge badge-soft-danger' style='font-size: 1rem;;'>" . count($notificationUtilisateur) . "</span>" : null ?>
+                    </h4>
+
+                    <!-- Close -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">
                 ×
               </span>
-                </button>
+                    </button>
 
-            </div>
-            <div class="modal-body bg-white">
-
-                <!-- List group -->
-                <div class="list-group list-group-flush my-n3">
-                    <a class="list-group-item px-0" href="#!">
-
-                        <div class="row">
-                            <div class="col-auto">
-
-                                <!-- Avatar -->
-                                <div class="avatar avatar-sm">
-                                    <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-                                </div>
-
-                            </div>
-                            <div class="col ml-n2">
-
-                                <!-- Content -->
-                                <div class="small text-muted">
-                                    <strong class="text-body">Dianna Smiley</strong> shared your post with <strong class="text-body">Ab Hadley</strong>, <strong class="text-body">Adolfo Hess</strong>, and <strong class="text-body">3 others</strong>.
-                                </div>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <small class="text-muted">
-                                    2m
-                                </small>
-
-                            </div>
-                        </div> <!-- / .row -->
-
-                    </a>
-                    <a class="list-group-item px-0" href="#!">
-
-                        <div class="row">
-                            <div class="col-auto">
-
-                                <!-- Avatar -->
-                                <div class="avatar avatar-sm">
-                                    <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-                                </div>
-
-                            </div>
-                            <div class="col ml-n2">
-
-                                <!-- Content -->
-                                <div class="small text-muted">
-                                    <strong class="text-body">Ab Hadley</strong> reacted to your post with a 😍
-                                </div>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <small class="text-muted">
-                                    2m
-                                </small>
-
-                            </div>
-                        </div> <!-- / .row -->
-
-                    </a>
-                    <a class="list-group-item px-0" href="#!">
-
-                        <div class="row">
-                            <div class="col-auto">
-
-                                <!-- Avatar -->
-                                <div class="avatar avatar-sm">
-                                    <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-                                </div>
-
-                            </div>
-                            <div class="col ml-n2">
-
-                                <!-- Content -->
-                                <div class="small text-muted">
-                                    <strong class="text-body">Adolfo Hess</strong> commented <blockquote class="text-body">“I don’t think this really makes sense to do without approval from Johnathan since he’s the one...” </blockquote>
-                                </div>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <small class="text-muted">
-                                    2m
-                                </small>
-
-                            </div>
-                        </div> <!-- / .row -->
-
-                    </a>
-                    <a class="list-group-item px-0" href="#!">
-
-                        <div class="row">
-                            <div class="col-auto">
-
-                                <!-- Avatar -->
-                                <div class="avatar avatar-sm">
-                                    <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-                                </div>
-
-                            </div>
-                            <div class="col ml-n2">
-
-                                <!-- Content -->
-                                <div class="small text-muted">
-                                    <strong class="text-body">Daniela Dewitt</strong> subscribed to you.
-                                </div>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <small class="text-muted">
-                                    2m
-                                </small>
-
-                            </div>
-                        </div> <!-- / .row -->
-
-                    </a>
-                    <a class="list-group-item px-0" href="#!">
-
-                        <div class="row">
-                            <div class="col-auto">
-
-                                <!-- Avatar -->
-                                <div class="avatar avatar-sm">
-                                    <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-                                </div>
-
-                            </div>
-                            <div class="col ml-n2">
-
-                                <!-- Content -->
-                                <div class="small text-muted">
-                                    <strong class="text-body">Miyah Myles</strong> shared your post with <strong class="text-body">Ryu Duke</strong>, <strong class="text-body">Glen Rouse</strong>, and <strong class="text-body">3 others</strong>.
-                                </div>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <small class="text-muted">
-                                    2m
-                                </small>
-
-                            </div>
-                        </div> <!-- / .row -->
-
-                    </a>
-                    <a class="list-group-item px-0" href="#!">
-
-                        <div class="row">
-                            <div class="col-auto">
-
-                                <!-- Avatar -->
-                                <div class="avatar avatar-sm">
-                                    <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-                                </div>
-
-                            </div>
-                            <div class="col ml-n2">
-
-                                <!-- Content -->
-                                <div class="small text-muted">
-                                    <strong class="text-body">Ryu Duke</strong> reacted to your post with a 😍
-                                </div>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <small class="text-muted">
-                                    2m
-                                </small>
-
-                            </div>
-                        </div> <!-- / .row -->
-
-                    </a>
-                    <a class="list-group-item px-0" href="#!">
-
-                        <div class="row">
-                            <div class="col-auto">
-
-                                <!-- Avatar -->
-                                <div class="avatar avatar-sm">
-                                    <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-                                </div>
-
-                            </div>
-                            <div class="col ml-n2">
-
-                                <!-- Content -->
-                                <div class="small text-muted">
-                                    <strong class="text-body">Glen Rouse</strong> commented <blockquote class="text-body">“I don’t think this really makes sense to do without approval from Johnathan since he’s the one...” </blockquote>
-                                </div>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <small class="text-muted">
-                                    2m
-                                </small>
-
-                            </div>
-                        </div> <!-- / .row -->
-
-                    </a>
-                    <a class="list-group-item px-0" href="#!">
-
-                        <div class="row">
-                            <div class="col-auto">
-
-                                <!-- Avatar -->
-                                <div class="avatar avatar-sm">
-                                    <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-                                </div>
-
-                            </div>
-                            <div class="col ml-n2">
-
-                                <!-- Content -->
-                                <div class="small text-muted">
-                                    <strong class="text-body">Grace Gross</strong> subscribed to you.
-                                </div>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <small class="text-muted">
-                                    2m
-                                </small>
-
-                            </div>
-                        </div> <!-- / .row -->
-
-                    </a>
                 </div>
+                <div class="modal-body bg-white">
 
+                    <!-- List group -->
+                    <div class="list-group list-group-flush my-n3">
+                        <?php if (isset($main)):
+
+                            $notificationUtilisateur = $main->getStatus('notification', ["id_notifier" => $_SESSION['_1']->getId()]);
+
+                            if (!empty($notificationUtilisateur)):
+                                foreach ($notificationUtilisateur as $item => $notif):
+                                    if (in_array($notif->id_status_notification, [1, 2])):
+                                    $image__notify = getImageUtilisateur($utilisateurDAO, $notif->id_notifieur);
+                                    ?>
+                                    <a class="<?= $notif->id_status_notification == 1 ? "notification" : null ?> list-group-item px-0 position-relative" <?= $notif->id_status_notification == 1 ? "data-status=" . base64_encode($notif->id_status_notification) . " data-content=" . base64_encode($notif->id_notification) : null ?>  href="<?= $notif->lien_notification ?>">
+
+                                        <?= $notif->id_status_notification == 1 ? "<span class='popover-body-indicator bg-danger position-absolute top' style='top: 3px; right: 0px;'></span>" : null ?>
+
+                                        <div class="row">
+                                            <div class="col-auto">
+
+                                                <!-- Avatar -->
+                                                <div class="avatar avatar-sm">
+                                                    <img src="<?= isset($image__notify) && $image__notify[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php?id=" . $notif->id_notifieur : $image__notify[0]['path']; ?>" alt="..." class="avatar-img rounded-circle">
+                                                </div>
+
+                                            </div>
+                                            <div class="col ml-n2 d-flex flex-column">
+                                                <div class="h6">
+                                                    <?= $notif->titre_notification ?>
+                                                </div>
+                                                <!-- Content -->
+                                                <div class="small text-muted">
+                                                    <?= $notif->texte_notification ?>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-auto">
+                                                <small class="text-muted">
+                                                    <?php
+                                                    $date_notify = $notif->date_notification;
+                                                    $datetime2 = new DateTime($date_notify);
+                                                    echo ago($datetime2);
+                                                    ?>
+                                                </small>
+                                            </div>
+                                        </div> <!-- / .row -->
+                                    </a>
+                                <?php endif;
+                                endforeach;
+                            else: ?>
+                                <a class="list-group-item px-0 position-relative"  href="#">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col ml-n2 d-flex flex-column">
+                                            <div class="h6">
+                                                Boite de notification vide
+                                            </div>
+                                            <!-- Content -->
+                                            <div class="small text-muted">
+                                                vous n'avez aucune notification.
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            &nbsp;
+                                        </div>
+                                    </div> <!-- / .row -->
+                                </a>
+                            <?php endif;
+                        endif; ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+<?php endif; ?>

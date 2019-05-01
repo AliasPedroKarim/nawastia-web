@@ -29,13 +29,13 @@ if (isset($_SESSION) && !empty($_SESSION['_1'])){
 
                 if (isset($_POST['visibilite_utilisateur']) && $_POST['visibilite_utilisateur'] === "true"){
                     $utilisateur->setVisibiliteUtilisateur(1);
-                }elseif(isset($_POST['visibilite_utilisateur']) && $_POST['visibilite_utilisateur'] === "false"){
+                }else{
                     $utilisateur->setVisibiliteUtilisateur(0);
                 }
 
                 if (isset($_POST['followers_utilisateur']) && $_POST['followers_utilisateur'] === "true"){
                     $utilisateur->setFollowersUtilisateur(1);
-                }elseif(isset($_POST['followers_utilisateur']) && $_POST['followers_utilisateur'] === "false"){
+                }else{
                     $utilisateur->setFollowersUtilisateur(0);
                 }
 
@@ -59,6 +59,8 @@ if (isset($_SESSION) && !empty($_SESSION['_1'])){
 
                     require_once '../../partie/profil/edit.php';
 
+                    echo '<script type="text/javascript" src="assets/js/edit_profil.js"></script>';
+
                     $new_display_profil = ob_get_contents();
                     ob_clean();
 
@@ -79,8 +81,7 @@ if (isset($_SESSION) && !empty($_SESSION['_1'])){
                     "error" => true,
                     "message" => "Ce compte ne vous appartient pas, mais encore vous n'êtes pas administrateur"]);
             }
-        }
-        elseif (isset($_POST['edit_profil_password']) && !empty($_POST['edit_profil_password']) && $_POST['edit_profil_password'] === "true") {
+        }elseif (isset($_POST['edit_profil_password']) && !empty($_POST['edit_profil_password']) && $_POST['edit_profil_password'] === "true") {
             if (($_SESSION['_1']->getId() === $_POST['id']) || $main->isStaff($_SESSION['_1']->getId()) === true){
                 if ($_POST['new_password'] === $_POST['similary_password']){
                     if (isset($_POST['id'])){
@@ -115,13 +116,89 @@ if (isset($_SESSION) && !empty($_SESSION['_1'])){
                     ]);
                 }
             }
-        }
-        else{
+        }elseif (isset($_POST['edit_profil_avatar']) && !empty($_POST['edit_profil_avatar']) && $_POST['edit_profil_avatar'] === "true") {
+            if (isset($_FILES['photo-profil'])){
+                $dataArray = [
+                    "name" => $_FILES['photo-profil']['name'],
+                    "tmp_name" => $_FILES['photo-profil']['tmp_name'],
+                    "size" => $_FILES['photo-profil']['size'],
+                    "error" => $_FILES['photo-profil']['error'],
+                    "type" => $_FILES['photo-profil']['type'],
+                    "id" => $_POST['id'],
+                    "photo-default" => $_POST['profil-default'],
+                    "photo-profil-default" => isset($_POST['photo-profil-default']) ? $_POST['photo-profil-default'] : null
+                ];
+            }else{
+                $dataArray = [
+                    "photo-default" => $_POST['profil-default'],
+                    "id" => $_POST['id'],
+                    "photo-profil-default" => isset($_POST['photo-profil-default']) ? $_POST['photo-profil-default'] : null
+                ];
+            }
+
+            if (!empty($utilisateurDAO->findUtilisateurNoOjbet($_POST['id'], 'id_utilisateur'))){
+                $resUplodFile = $utilisateurDAO->uplodImage($dataArray);
+
+                isset($resUplodFile["message"]) ? $message = $resUplodFile["message"] : $message = "nom renseigner";
+                isset($resUplodFile["error"]) ? $error = $resUplodFile["error"] : $error = true;
+                array_push($json, [
+                    "error" => $error,
+                    "message" => $message]);
+
+                echo json_encode($json);
+            }else{
+                array_push($json, [
+                    "error" => true,
+                    "message" => "L'utilisateurs que vous essayez de modifier n'existe pas."]);
+
+                echo json_encode($json);
+            }
+
+        }elseif (isset($_POST['edit_profil_notification']) && !empty($_POST['edit_profil_notification']) && $_POST['edit_profil_notification'] === "true") {
+
+            $res = '';
+            $status = null;
+
+            if (isset($_POST['notification_activite__edit']) && $_POST['notification_activite__edit'] === "on"){
+                $status = 1;
+                $res = $utilisateurDAO->changeNotificationActivite(1, $_SESSION['_1']->getId());
+            }else{
+                $status = 0;
+                $res = $utilisateurDAO->changeNotificationActivite(0, $_SESSION['_1']->getId());
+            }
+
+            isset($res["message"]) ? $message = $res["message"] : $message = "nom renseigner";
+            isset($res["error"]) ? $error = $res["error"] : $error = true;
+
+            if (isset($res) && !empty($res)){
+                if (isset($res['error']) && $res['error'] === false){
+                    $_SESSION['_1']->setNotificationActivite($status);
+                    array_push($json, [
+                        "error" => $error,
+                        "message" => $message]);
+                    echo json_encode($json);
+                }else{
+                    array_push($json, [
+                        "error" => $error,
+                        "message" => $message]);
+                    echo json_encode($json);
+                }
+            }else{
+                array_push($json, [
+                    "error" => true,
+                    "message" => "Une erreur est survenue lors de l'exécution de l'action."]);
+                echo json_encode($json);
+            }
+
+        }else{
             header("Location: ../../../../profil.php");
+            die();
         }
     }else{
-        header("location: /");
+        header("Location: /");
+        die();
     }
 }else{
-    header("location: /");
+    header("Location: /");
+    die();
 }
