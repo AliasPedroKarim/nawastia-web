@@ -12,9 +12,8 @@ use \Exception;
 use \PDO;
 
 class DB{
-
+    public $_PDO;
     private $setting = [];
-
     private static $_instance;
 
     public static function getInstance(){
@@ -35,20 +34,6 @@ class DB{
         return $this->setting[$key];
     }
 
-    public $_PDO;
-    /*private $_host,
-        $_dbName,
-        $_port,
-        $_nomUtilisateur,
-        $_motDePasse;
-    public function __construct($host = "localhost", $dbName = "nawastia_db", $port = 3307, $nomUtilisateur = "root", $motDePasse = ""){ //$host = "www.g01.joutes.pw", $dbName = "joutes_db", $port = 3306, $nomUtilisateur = "root", $motDePasse = "joutes01"
-        $this->setHost($host);
-        $this->setDbName($dbName);
-        $this->setPort($port);
-        $this->setNomUtilisateur($nomUtilisateur);
-        $this->setMotDePasse($motDePasse);
-    }*/
-
     /**
      * Permet de commencer une connexion vers la base de donnée
      *
@@ -60,13 +45,11 @@ class DB{
             $this->_PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             return $this->_PDO;
         }catch (Exception $ex){
-            //echo "Une erreur est survenue lors de la connexion à la base de donnée !\n<div><code>' . $ex . '</code></div></div>";
+            echo "Une erreur est survenue lors de la connexion à la base de donnée !\n<div><code>' . $ex . '</code></div></div>";
             $this->_PDO = null;
             die();
         }
     }
-
-    //Creation des methodes getters et setters...
 
     /**
      * @return PDO

@@ -365,7 +365,7 @@
 
                                             <!-- Label -->
 
-                                            <div class="preview-img border-1 border-secondary" id="p-img" style="background-image: url('<?= isset($infoImageProfle) && $infoImageProfle[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $infoImageProfle[0]['path']; ?>'); width: 300px; height: 300px; box-shadow: unset;" >
+                                            <div class="preview-img border-1 border-secondary" id="p-img" style="background-image: url('<?= isset($profil_image) && $profil_image[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $profil_image[0]['path']; ?>'); width: 300px; height: 300px; box-shadow: unset;" >
                                                 <label for="photo-profil__edit" class="label-img d-flex justify-content-center align-items-center" style=" width: 300px; height: 300px;">
                                                     <i class="fe fe-edit-2" style="color: white; font-size: 6.0em;"></i>
                                                 </label>
@@ -384,7 +384,8 @@
                                 <hr class="mt-4 mb-5">
 
                                 <div class="row">
-                                    <div class="col-12 col-md-6 offset-3">
+                                    <div class="col-12 col-md-3">&nbsp;</div>
+                                    <div class="col-12 col-md-6">
 
                                         <!-- Last name -->
                                         <div class="form-group">
@@ -395,11 +396,12 @@
                                             </label>
 
                                             <!-- Input -->
-                                            <input type="text" id="photo-profil-default__edit" name="photo-profil-default" class="form-control" placeholder="http://url..." value="<?= isset($infoImageProfle) && $infoImageProfle[0]['blob'] == 1 ? $infoImageProfle[0]['nom_d_origine'] : $infoImageProfle[0]['path']; ?>">
+                                            <input type="text" id="photo-profil-default__edit" name="photo-profil-default" class="form-control text-center" placeholder="http://url..." value="<?= isset($profil_image) && $profil_image[0]['blob'] == 1 ? $profil_image[0]['nom_d_origine'] : $profil_image[0]['path']; ?>">
 
                                         </div>
 
                                     </div>
+                                    <div class="col-12 col-md-3">&nbsp;</div>
                                 </div>
 
                                 <div class="row">

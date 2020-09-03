@@ -66,7 +66,7 @@ class Main{
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function useAPI(string $url, string $pathCertificat = "") {
+    public function getInfoMC(string $url, string $pathCertificat = "") {
         if (isset($url)){
             $curl = curl_init($url);
             curl_setopt_array($curl, [
@@ -81,6 +81,49 @@ class Main{
             return json_decode($data);
         }
         return null;
+    }
+
+    public function getImageUtilisateur(\App\Utilisateur\UtilisateurDAO $utilisateurDAO, $id_utilisateur){
+        $utilisateur = $utilisateurDAO->findUtilisateurNoOjbet($id_utilisateur, 'id_utilisateur');
+        if (isset($utilisateur) && !empty($utilisateur)){
+            return $utilisateurDAO->getImageUtilisateur($utilisateur[0]['id_image_utilisateur']);
+        }
+        return null;
+    }
+
+    public function allRole(\App\Utilisateur\UtilisateurDAO $utilisateurDAO, $userIdSession){
+        if ($userIdSession == null){
+            return [];
+        }else{
+            if (isset($_SESSION['_1'])){
+                $allRole = $utilisateurDAO->getAllRole($userIdSession);
+            }
+            return $allRole;
+        }
+    }
+
+    public function formatMesssage($message){
+        if(preg_match_all('/@(.*?)\s/m', $message, $matches)) {
+
+            foreach ($matches[0] as $match){
+                preg_match_all("/[\.|\|\+|\*|\?|\[|\^|\]|\$|\(|\)|\{|\}|\=|\!|\<|\>|\||\:|\-|\#]/", $match, $i);
+                $j = array();
+                foreach ($i[0] as $k){
+                    if (!in_array($k, $j)){
+                        $j[] = $k;
+                    }
+                }
+                if (!empty($j)){
+                    foreach ($j as $item){
+                        $match = preg_replace("/[\\" . $item . "]/", "\\" . $item, $match);
+                    }
+                }
+                $message = preg_replace('#'. $match .'#', '<a href="#!" class="badge badge-soft-primary">'. stripslashes($match) .'</a>', $message);
+            }
+            return $message;
+        }else{
+            return $message;
+        }
     }
 
 }

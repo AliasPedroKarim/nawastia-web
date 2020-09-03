@@ -1,73 +1,200 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e8caf270-3a7a-45b2-87bf-d551be86189f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Activite/ActiviteDAO.class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Config.class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Controller/AppController.class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Utilisateur/AmisDAO.class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Utilisateur/NotificationDAO.class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/Controller/Controller.class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/background/bg-test-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/icon/default_icon_serveur.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/add_comment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/custom/chart-custom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/edit_profil.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/edit_reaction.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/manage_friend.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/manage_notification.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/register_profil.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/inc/partie/blob/displayImage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/inc/partie/modal-info_serveur.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/inc/traitement/activite/manage_activite.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/inc/traitement/profil/manage_amis.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/inc/traitement/profil/manage_notification.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/supplies/emoji.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/supplies/sql/emoji.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/supplies/sql/image_user.sql" afterDir="false" />
+    <list default="true" id="e8caf270-3a7a-45b2-87bf-d551be86189f" name="Default Changelist" comment="- Mise en place du systeme news activité, commentaire, gestion des amis, notification (ne supporte pour l'instant que les demandes d'amis)&#10;- Mise en place ou modification du système d'information serveur : (before) -&gt; file_get_content(), (after) -&gt; extention curl, pour l'interrogation avec une api (possibilité de rajouter les certificat pour la verification, api utilisé maintenant &quot;api.mcsrvstat.us&quot; pour le projet), dans le dossier supplies\certificat\... il y a le certificat d'authentification du site.&#10;- Aucun design pattern n'a été adopter pour l'instant, posibilité -&gt; MVC (Model View Controller) est envisagé...">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d354edd1-c012-45cf-8a79-c7d1287bcc7d.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f65d40d4-da29-4a8a-9639-6e9f400805a0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f65d40d4-da29-4a8a-9639-6e9f400805a0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controller/AppController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controller/AppController.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/DB/DB.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DB/DB.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Main/Main.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Main/Main.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Utilisateur/Utilisateur.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Utilisateur/Utilisateur.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Utilisateur/UtilisateurDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Utilisateur/UtilisateurDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/administration.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/administration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/custom/popover.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/custom/popover.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Main/MainSecurity.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Main/MainSecurity.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Controller/Controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Controller/Controller.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/administration.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/custom/card.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/custom/font.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/custom/input.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/custom/modal.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/custom/navbar.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/custom/popover.scss" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/add_comment.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/custom/chart-custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/custom/chart-custom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/edit_profil.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/edit_profil.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/edit_reaction.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/external-assets/Chart.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/external-assets/Chart.bundle.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/external-assets/Chart.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/external-assets/Chart.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/jquery/jquery-1.11.0.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/jquery/jquery-1.11.0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/jquery/jquery-3.3.1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/jquery/jquery-3.3.1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/connexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/register_profil.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/register_profil.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/connexion.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/inc/function.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/function.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/inc/partie/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/partie/main/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/inc/partie/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/partie/main/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/inc/partie/blob/displayImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/partie/blob/displayImage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/inc/partie/main/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/partie/main/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/inc/partie/main/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/partie/main/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/inc/partie/modal-info.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/partie/modal-info.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/inc/partie/navbar-admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/partie/navbar-admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/inc/partie/navbar-main.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/partie/navbar-main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/inc/partie/profil/amis.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/partie/profil/amis.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/inc/partie/profil/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/partie/profil/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/inc/partie/profil/maj.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/partie/profil/maj.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/inc/partie/profil/new-activites.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/partie/profil/new-activites.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/inc/partie/profil/notification.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/partie/profil/notification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/inc/partie/profil/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/partie/profil/search.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/inc/pre-load-function.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/pre-load-function.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/inc/traitement/activite/manage_activite.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/traitement/activite/manage_activite.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/inc/traitement/connexion-inscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/traitement/connexion-inscription.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/inc/traitement/deconnexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/traitement/deconnexion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/inc/traitement/profil/edit_profil__async.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/traitement/profil/edit_profil__async.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/inc/traitement/profil/manage_notification.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inc/traitement/profil/manage_notification.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/inscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/inscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profil.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/profil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/supplies/sql/nawastia_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/supplies/sql/nawastia_db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/inscription.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profil.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/supplies/certificat/api.mcsrvstat.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/supplies/emoji.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/supplies/sql/emoji.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/supplies/sql/image_user.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/supplies/sql/nawastia_db.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/Chart.bundle.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/Chart.extension.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/Chart.min.js(1).téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/Chart.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/analytics.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/avatar-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/avatar-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/avatar-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/avatar-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/avatar-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/avatar-6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/avatar-7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/avatar-8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/bootstrap.bundle.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/bootstrap.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/buttons.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/cookie.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/dashboard-alt.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/dashicons.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/designer-life.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/dropzone.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/feather.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/file-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/flatpickr.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/flatpickr.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/flexslider.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/font-awesome.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/happiness.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/highlight.pack.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/imgareaselect.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/jquery-migrate.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/jquery.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/jquery.mask.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/jquery.min.js(1).téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/jquery.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/list.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/media-views.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/mediaelementplayer.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/plupload.full.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/popper.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/post-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/profile-cover-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/profile-cover-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/project-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/project-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/project-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/purple.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/quill.core.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/quill.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/scripts.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/select2.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/select2.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/team-logo-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/team-logo-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/tether.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/theme-dark.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/theme.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/theme.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/utils.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/vs2015.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/woocommerce-layout.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/woocommerce-smallscreen.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/woocommerce.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/wp-emoji-release.min.js.téléchargement" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/wp-mediaelement.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/PocketMine-MP.phar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/banned-ips.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/banned-players.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/deplister.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/dev/php7ts.lib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/ext/php_bz2.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/ext/php_crypto.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/ext/php_ds.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/ext/php_gd2.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/ext/php_igbinary.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/ext/php_leveldb.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/ext/php_mysqli.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/ext/php_openssl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/ext/php_pocketmine_chunkutils.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/ext/php_pthreads.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/ext/php_recursionguard.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/ext/php_sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/extras/ssl/openssl.cnf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/install.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/leveldb.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/libcrypto-1_1-x64.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/libsodium.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/libssh2.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/libssl-1_1-x64.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/license.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/news.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/nghttp2.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/phar.phar.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/pharcommand.phar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/php.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/php.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/php.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/php.ini-development" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/php.ini-production" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/php7ts.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/pthreadvc3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/readme-redist-bins.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/sasl2/saslANONYMOUS.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/sasl2/saslCRAMMD5.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/sasl2/saslDIGESTMD5.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/sasl2/saslLOGIN.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/sasl2/saslNTLM.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/sasl2/saslOTP.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/sasl2/saslPLAIN.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/sasl2/saslSASLDB.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/sasl2/saslSCRAM.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/sasl2/saslSQLITE.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/snapshot.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/bin/php/yaml.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/ops.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/pocketmine.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/resource_packs/resource_packs.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/server.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/server.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/start.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/white-list.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/worlds/world/level.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pmmp/worlds/world/region/r.0.0.mcapm" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -96,20 +223,6 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="nawastia_db: schema" type="ebfa3cd1:MariaImplModel$Schema" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="nawastia_db@localhost [2]" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="nawastia_db: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="notification: table" type="dbc44a63:MariaImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="nawastia_db@localhost [2]" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="nawastia_db: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="status_notification: table" type="dbc44a63:MariaImplModel$Table" />
-      </path>
     </expand>
     <select />
   </component>
@@ -123,340 +236,60 @@
       <node key="4caf18a3-7a5b-4f60-8d6c-fea690c9cb19" />
     </expanded>
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/profil.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
-              <folding>
-                <element signature="e#89#107#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/inc/partie/modal-info_serveur.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h6#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="e#3746#3752#0#HTML" expanded="true" />
-                <element signature="e#3752#3758#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Main/Main.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="68" column="68" selection-start-line="68" selection-start-column="68" selection-end-line="68" selection-end-column="68" />
-              <folding>
-                <element signature="e#29#43#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <element signature="e#89#107#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/inc/pre-load-function.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="42" column="96" selection-start-line="42" selection-start-column="96" selection-end-line="42" selection-end-column="96" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/inc/partie/navbar-main.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="10" column="146" selection-start-line="10" selection-start-column="106" selection-end-line="10" selection-end-column="146" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/administration.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
-              <folding>
-                <element signature="e#89#107#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/inc/function.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
-              <caret line="58" column="1" lean-forward="true" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="1" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="templatePhpBootstrap" />
-        <option value="SCSS File" />
         <option value="tsconfig.json" />
         <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>chart</find>
-      <find>padding</find>
-      <find>arrow</find>
-      <find>popover-body-indicator</find>
-      <find>chartjs-hidden-iframe</find>
-      <find>weeklyHoursChart</find>
-      <find>rounde</find>
-      <find>utili</find>
-      <find>fn.</find>
-      <find>radi</find>
-      <find>cha</find>
-      <find>Demo</find>
-      <find>CapStyle</find>
-      <find>WeeklyHours</find>
-      <find>borderCapStyle</find>
-      <find>labels</find>
-      <find>avatar</find>
-      <find>draw</find>
-      <find>date(&quot;Y-m-d H:i:s&quot;)</find>
-      <find>$amis</find>
-      <find>header</find>
-      <find>$db-&gt;</find>
-      <find>$db = DB::getInstance()-&gt;connexion();</find>
-      <find>manage_amis</find>
-      <find>id_other_user</find>
-      <find>$_POST['action']</find>
-      <find>\&quot;</find>
-      <find>modal-body</find>
-      <find>$color-main</find>
-      <find>h5</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/public/inc/traitement/activite/edit_reaction__async.php" />
-        <option value="$PROJECT_DIR$/public/assets/css/style.css" />
-        <option value="$PROJECT_DIR$/public/assets/js/add_commentaire.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/edit_profil.js" />
-        <option value="$PROJECT_DIR$/app/Config.class.php" />
-        <option value="$PROJECT_DIR$/config/config.php" />
-        <option value="$PROJECT_DIR$/app/DB/DB.class.php" />
-        <option value="$PROJECT_DIR$/test/Preview - Bootstrap Themes.html" />
-        <option value="$PROJECT_DIR$/test/Preview - Bootstrap Themes_files/dashboard-alt.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/theme.min.js" />
-        <option value="$PROJECT_DIR$/public/assets/css/custom/popover.scss" />
-        <option value="$PROJECT_DIR$/public/assets/js/bootstrap.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/external-assets/Chart.bundle.min.js" />
-        <option value="$PROJECT_DIR$/public/inc/partie/head.php" />
-        <option value="$PROJECT_DIR$/public/inc/partie/profil/new-activites.php" />
-        <option value="$PROJECT_DIR$/public/assets/js/custom/chart-custom.js" />
-        <option value="$PROJECT_DIR$/app/Controller/ActiviteController.php" />
-        <option value="$PROJECT_DIR$/core/Controller/Controller.class.php" />
-        <option value="$PROJECT_DIR$/app/Controller/AppController.class.php" />
-        <option value="$PROJECT_DIR$/public/inc/traitement/connexion-inscription.php" />
-        <option value="$PROJECT_DIR$/public/inc/traitement/deconnexion.php" />
-        <option value="$PROJECT_DIR$/public/inc/traitement/profil/edit_profil__async.php" />
-        <option value="$PROJECT_DIR$/public/assets/js/main.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/manage_friend.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/edit_reaction.js" />
-        <option value="$PROJECT_DIR$/public/inc/traitement/activite/manage_activite.php" />
-        <option value="$PROJECT_DIR$/public/assets/js/add_comment.js" />
-        <option value="$PROJECT_DIR$/app/Activite/ActiviteDAO.class.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/f65d40d4-da29-4a8a-9639-6e9f400805a0/console.sql" />
-        <option value="$PROJECT_DIR$/public/inc/partie/profil/amis.php" />
-        <option value="$PROJECT_DIR$/public/inc/traitement/profil/manage_amis.php" />
-        <option value="$PROJECT_DIR$/app/Utilisateur/UtilisateurDAO.class.php" />
-        <option value="$PROJECT_DIR$/app/Utilisateur/AmisDAO.class.php" />
-        <option value="$PROJECT_DIR$/app/Utilisateur/NotificationDAO.class.php" />
-        <option value="$PROJECT_DIR$/public/assets/js/manage_notification.js" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
-        <option value="$PROJECT_DIR$/public/inc/traitement/profil/manage_notification.php" />
-        <option value="$PROJECT_DIR$/public/inc/partie/profil/notification.php" />
-        <option value="$PROJECT_DIR$/public/inc/partie/navbar-admin.php" />
-        <option value="$PROJECT_DIR$/public/inscription.php" />
-        <option value="$PROJECT_DIR$/public/connexion.php" />
-        <option value="$PROJECT_DIR$/public/inc/partie/main/footer.php" />
-        <option value="$PROJECT_DIR$/public/assets/css/style.scss" />
-        <option value="$PROJECT_DIR$/app/Main/Main.class.php" />
-        <option value="$PROJECT_DIR$/public/inc/function.php" />
-        <option value="$PROJECT_DIR$/public/inc/partie/navbar-main.php" />
-        <option value="$PROJECT_DIR$/public/profil.php" />
-        <option value="$PROJECT_DIR$/public/index.php" />
-        <option value="$PROJECT_DIR$/public/inc/pre-load-function.php" />
-        <option value="$PROJECT_DIR$/public/inc/partie/modal-info_serveur.php" />
-        <option value="$PROJECT_DIR$/public/administration.php" />
-      </list>
-    </option>
-  </component>
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 3.1" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="256" />
-    <option name="y" value="34" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
-  </component>
+  <component name="ProjectId" id="1R30Y99ec9lipIBs5aN3hBpFIDU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="nawastia_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nawastia_web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nawastia_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nawastia_web" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nawastia_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nawastia_web" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nawastia_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nawastia_web" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nawastia_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nawastia_web" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nawastia_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nawastia_web" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nawastia_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nawastia_web" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-              <item name="icon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nawastia_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nawastia_web" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="inc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nawastia_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nawastia_web" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="inc" type="462c0819:PsiDirectoryNode" />
-              <item name="partie" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nawastia_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nawastia_web" type="462c0819:PsiDirectoryNode" />
-              <item name="supplies" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nawastia_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nawastia_web" type="462c0819:PsiDirectoryNode" />
-              <item name="supplies" type="462c0819:PsiDirectoryNode" />
-              <item name="certificat" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mariadb&#10;mysql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/img/icon" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="settings.editor.splitter.proportion" value="0.21073559" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\public\assets\img\icon" />
-      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\test" />
-      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\public\assets\img\background" />
-      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\supplies\sql" />
-      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\public\assets\font" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\public\inc\partie\main" />
-      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\test" />
-      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\supplies\sql" />
-      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\app\DB" />
-      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\app\Joueur" />
+      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\config\raw" />
+      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\config" />
+      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\config\sql" />
+      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web" />
+      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\public" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\config\sql" />
+      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\public" />
+      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\public\inc" />
+      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\app\Views" />
+      <recent name="C:\Users\karim\Desktop\Lab\nawastia_web\public\assets\img\icon" />
+    </key>
   </component>
   <component name="RunManager">
-    <configuration name="Run web Nawastia" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$/public" port="8000">
+    <configuration name="Run web Nawastia" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$/public" port="8001">
       <method v="2" />
     </configuration>
   </component>
@@ -527,7 +360,60 @@
       <workItem from="1556628014920" duration="23759000" />
       <workItem from="1556656916217" duration="22784000" />
       <workItem from="1556702694086" duration="10306000" />
-      <workItem from="1556729061446" duration="19544000" />
+      <workItem from="1556729061446" duration="21302000" />
+      <workItem from="1556792714145" duration="2461000" />
+      <workItem from="1556805152876" duration="23823000" />
+      <workItem from="1556841569744" duration="6178000" />
+      <workItem from="1556877804308" duration="6862000" />
+      <workItem from="1556906402623" duration="22014000" />
+      <workItem from="1556955413761" duration="8173000" />
+      <workItem from="1556980422540" duration="2958000" />
+      <workItem from="1557051586409" duration="504000" />
+      <workItem from="1557161442229" duration="3164000" />
+      <workItem from="1557197986983" duration="1732000" />
+      <workItem from="1557214956158" duration="1550000" />
+      <workItem from="1557216535382" duration="629000" />
+      <workItem from="1557224776059" duration="39000" />
+      <workItem from="1557224828731" duration="127000" />
+      <workItem from="1557233082527" duration="50000" />
+      <workItem from="1557505219009" duration="9352000" />
+      <workItem from="1557815188873" duration="455000" />
+      <workItem from="1557927207254" duration="775000" />
+      <workItem from="1558135074418" duration="15000" />
+      <workItem from="1558466060814" duration="609000" />
+      <workItem from="1558866085759" duration="785000" />
+      <workItem from="1558871987201" duration="10000" />
+      <workItem from="1567595383990" duration="954000" />
+      <workItem from="1567617675921" duration="43000" />
+      <workItem from="1568880535422" duration="714000" />
+      <workItem from="1568883835055" duration="484000" />
+      <workItem from="1568905291888" duration="499000" />
+      <workItem from="1569361987041" duration="681000" />
+      <workItem from="1574854789648" duration="173000" />
+      <workItem from="1574855197231" duration="106000" />
+      <workItem from="1579548497725" duration="199000" />
+      <workItem from="1580149482513" duration="1084000" />
+      <workItem from="1580154268573" duration="601000" />
+      <workItem from="1580318272374" duration="129000" />
+      <workItem from="1580318995003" duration="6000" />
+      <workItem from="1580518303002" duration="599000" />
+      <workItem from="1580533150865" duration="598000" />
+      <workItem from="1580631817477" duration="596000" />
+      <workItem from="1580642313974" duration="598000" />
+      <workItem from="1580658371549" duration="21000" />
+      <workItem from="1580663173282" duration="4000" />
+      <workItem from="1580776609848" duration="78000" />
+      <workItem from="1580843783463" duration="905000" />
+      <workItem from="1581019244522" duration="2664000" />
+      <workItem from="1581027199662" duration="617000" />
+      <workItem from="1586898118410" duration="240000" />
+      <workItem from="1587250931812" duration="713000" />
+      <workItem from="1587252026758" duration="125000" />
+      <workItem from="1587252167886" duration="334000" />
+      <workItem from="1587261821482" duration="121000" />
+      <workItem from="1588458413778" duration="18000" />
+      <workItem from="1599147981226" duration="3835000" />
+      <workItem from="1599152682460" duration="383000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit for projet nawastia web...">
       <created>1555355952727</created>
@@ -553,9 +439,6 @@
     <option name="localTasksCounter" value="4" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="536469000" />
-  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -565,57 +448,15 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25373134" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Database Console" order="0" sideWeight="0.4968017" weight="0.20910075" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49946696" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4946695" visible="true" weight="0.2112676" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" sideWeight="0.49946696" weight="0.32936078" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" sideWeight="0.49946696" weight="0.32936078" />
-      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.4989339" weight="0.36403033" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4989339" weight="0.28710726" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5053305" side_tool="true" weight="0.2112676" />
-      <window_info anchor="bottom" id="Command Line Tools Console" order="13" weight="0.32936078" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.28884026" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -634,451 +475,24 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Commit for projet nawastia web..." />
     <MESSAGE value="- Beaucoup de modification, on était apporter&#10;- Creation de la base donnée avec la moitié de tous les fonctionnalités du site (actualité, event, maj, ....)&#10;- Mise à jour des données utilisateur dynamique avec du ajax jquery (la methode &quot;post&quot; a été utiliser)&#10;- Amélioration et changement de la navigation en mode dashboard" />
     <MESSAGE value="+ oublie xD" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ oublie xD" />
+    <MESSAGE value="- Mise en place du systeme news activité, commentaire, gestion des amis, notification (ne supporte pour l'instant que les demandes d'amis)&#10;- Mise en place ou modification du système d'information serveur : (before) -&gt; file_get_content(), (after) -&gt; extention curl, pour l'interrogation avec une api (possibilité de rajouter les certificat pour la verification, api utilisé maintenant &quot;api.mcsrvstat.us&quot; pour le projet), dans le dossier supplies\certificat\... il y a le certificat d'authentification du site.&#10;- Aucun design pattern n'a été adopter pour l'instant, posibilité -&gt; MVC (Model View Controller) est envisagé..." />
+    <option name="LAST_COMMIT_MESSAGE" value="- Mise en place du systeme news activité, commentaire, gestion des amis, notification (ne supporte pour l'instant que les demandes d'amis)&#10;- Mise en place ou modification du système d'information serveur : (before) -&gt; file_get_content(), (after) -&gt; extention curl, pour l'interrogation avec une api (possibilité de rajouter les certificat pour la verification, api utilisé maintenant &quot;api.mcsrvstat.us&quot; pour le projet), dans le dossier supplies\certificat\... il y a le certificat d'authentification du site.&#10;- Aucun design pattern n'a été adopter pour l'instant, posibilité -&gt; MVC (Model View Controller) est envisagé..." />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/assets/js/theme.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="611" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/custom/popover.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="327" column="1" selection-start-line="327" selection-start-column="1" selection-end-line="327" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="240" column="6" selection-start-line="240" selection-start-column="6" selection-end-line="240" selection-end-column="6" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/theme.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="13373" column="4" selection-start-line="13373" selection-start-column="1" selection-end-line="13373" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/partie/profil/new-activites.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2760">
-          <caret line="202" column="72" selection-start-line="202" selection-start-column="72" selection-end-line="202" selection-end-column="72" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/external-assets/Chart.bundle.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="6555" column="19" selection-start-line="6555" selection-start-column="19" selection-end-line="6555" selection-end-column="19" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controller/ActiviteController.php" />
-    <entry file="file://$PROJECT_DIR$/app/Controller/AppController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/Controller/Controller.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="76" selection-end-line="23" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://f65d40d4-da29-4a8a-9639-6e9f400805a0/schema/nawastia_db/table/status_activite">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/custom/chart-custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="501" column="29" selection-start-line="501" selection-start-column="29" selection-end-line="501" selection-end-column="29" />
-          <folding>
-            <element signature="e#1928#5321#0" />
-            <element signature="e#5354#14960#0" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-            <element signature="e#14988#16518#0" />
-            <element signature="e#16551#17885#0" />
-            <element signature="e#17923#19262#0" />
-            <element signature="e#19290#20845#0" />
-            <element signature="e#20878#22207#0" />
-            <element signature="e#22236#23433#0" />
-            <element signature="e#23466#24703#0" />
-            <element signature="e#24734#25258#0" />
-            <element signature="e#25289#26127#0" />
-            <element signature="e#26158#26443#0" />
-            <element signature="e#26504#26564#0" />
-            <element signature="e#26590#27014#0" />
-            <element signature="e#27042#27326#0" />
-            <element signature="e#27355#27440#0" />
-            <element signature="e#27467#28126#0" />
-            <element signature="e#28155#28863#0" />
-            <element signature="e#28892#28977#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/traitement/connexion-inscription.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="179" column="10" selection-start-line="179" selection-start-column="4" selection-end-line="179" selection-end-column="10" />
-          <folding>
-            <element signature="e#89#121#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/traitement/deconnexion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/traitement/profil/edit_profil__async.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="195" selection-start-line="195" selection-end-line="195" />
-          <folding>
-            <element signature="e#7#25#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://f65d40d4-da29-4a8a-9639-6e9f400805a0/schema/nawastia_db/table/amis">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="214" selection-start-line="214" selection-end-line="214" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/edit_reaction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/traitement/activite/manage_activite.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="62" column="102" selection-start-line="62" selection-start-column="102" selection-end-line="62" selection-end-column="102" />
-          <folding>
-            <element signature="e#7#36#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/add_comment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="43" column="68" selection-start-line="43" selection-start-column="68" selection-end-line="43" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Utilisateur/Utilisateur.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Config.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/f65d40d4-da29-4a8a-9639-6e9f400805a0/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="114" selection-start-column="114" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://f65d40d4-da29-4a8a-9639-6e9f400805a0/schema/nawastia_db/table/status_amis">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://f65d40d4-da29-4a8a-9639-6e9f400805a0/schema/nawastia_db/table/status_notification">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/partie/profil/amis.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="44" column="44" lean-forward="true" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="195" />
-          <caret line="41" column="114" lean-forward="true" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Utilisateur/UtilisateurDAO.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="477" column="34" selection-start-line="477" selection-start-column="34" selection-end-line="477" selection-end-column="34" />
-          <folding>
-            <element signature="e#117#131#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://f65d40d4-da29-4a8a-9639-6e9f400805a0/schema/nawastia_db/table/utilisateur">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Utilisateur/AmisDAO.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="137" column="155" selection-start-line="137" selection-start-column="155" selection-end-line="137" selection-end-column="155" />
-          <folding>
-            <element signature="e#37#51#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Activite/ActiviteDAO.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://f65d40d4-da29-4a8a-9639-6e9f400805a0/schema/nawastia_db/table/notification">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/manage_notification.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="25" column="58" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/traitement/profil/manage_notification.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1952">
-          <caret line="125" column="34" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
-          <folding>
-            <element signature="e#7#25#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Utilisateur/NotificationDAO.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#37#51#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/manage_friend.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/traitement/profil/manage_amis.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1104">
-          <caret line="71" column="1" selection-start-line="9" selection-end-line="71" selection-end-column="1" />
-          <folding>
-            <element signature="e#7#25#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/partie/profil/notification.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1104">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/partie/navbar-admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4832">
-          <caret line="302" column="108" selection-start-line="302" selection-start-column="108" selection-end-line="302" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/bootstrap/_modal.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="157" column="11" selection-start-line="157" selection-start-column="1" selection-end-line="157" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inscription.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/connexion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/partie/main/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="38" selection-start-column="28" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="120" column="20" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/partie/main/head.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Main/Main.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="68" column="68" selection-start-line="68" selection-start-column="68" selection-end-line="68" selection-end-column="68" />
-          <folding>
-            <element signature="e#29#43#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/profil.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="e#89#107#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/partie/modal-info_serveur.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h6#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="e#3746#3752#0#HTML" expanded="true" />
-            <element signature="e#3752#3758#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/function.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="58" column="1" lean-forward="true" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="1" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/partie/navbar-main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="146" selection-start-line="10" selection-start-column="106" selection-end-line="10" selection-end-column="146" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#89#107#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/administration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
-          <folding>
-            <element signature="e#89#107#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/inc/pre-load-function.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="42" column="96" selection-start-line="42" selection-start-column="96" selection-end-line="42" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
+  <component name="WindowStateProjectService">
+    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1599149046887">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1599149046887" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599150470215">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1599150470215" />
   </component>
   <component name="masterDetails">
     <states>

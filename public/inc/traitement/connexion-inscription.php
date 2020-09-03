@@ -137,7 +137,6 @@ if (isset($_POST) && !empty($_POST)){
                                     array_push($json, ["error" => false,
                                         "message" => "Votre compte a été creer, vous pouvez vous connectez en <a href=\"connexion.php\">cliquant ici </a> !"]);
                                     echo json_encode($json);
-
                                 }
                             }else{
 
@@ -173,10 +172,10 @@ if (isset($_POST) && !empty($_POST)){
         }
 
     }else {
-        header("Location: ../../index.php");
+        header("Location: ../../home.php");
         die();
     }
 }else {
-    header("Location: ../../index.php");
+    header("Location: ../../home.php");
     die();
 }

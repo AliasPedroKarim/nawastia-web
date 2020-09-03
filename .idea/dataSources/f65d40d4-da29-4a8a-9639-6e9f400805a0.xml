@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="nawastia_db@localhost [2]">
-  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.15">
+  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.17">
     <root id="1">
       <ServerVersion>10.3.12</ServerVersion>
       <DefaultEngine>InnoDB</DefaultEngine>
@@ -17,7 +17,6 @@
     </schema>
     <schema id="5" parent="1" name="nawastia_db">
       <Current>1</Current>
-      <Visible>1</Visible>
       <Collation>utf8mb4_general_ci</Collation>
     </schema>
     <schema id="6" parent="1" name="performance_schema">

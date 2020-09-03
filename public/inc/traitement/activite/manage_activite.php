@@ -11,7 +11,6 @@ require_once '../../pre-load-function.php';
 
 $displaySecure = new MainSecurity();
 $utilisateurDAOforimg = new UtilisateurDAO();
-$infoImageProfle = infoImage($utilisateurDAOforimg);
 
 $json = [];
 
@@ -21,6 +20,7 @@ if (isset($_SESSION) && !empty($_SESSION['_1'])) {
         $utilisateur = new Utilisateur();
         $utilisateurDAO = new UtilisateurDAO();
         $activite = new ActiviteDAO();
+        $profil_image = $main->getImageUtilisateur($utilisateurDAO, $_SESSION['_1']->getId());
 
         if (isset($_POST['edit_reaction']) && !empty($_POST['edit_reaction']) && $_POST['edit_reaction'] === "true") {
 
@@ -38,7 +38,7 @@ if (isset($_SESSION) && !empty($_SESSION['_1'])) {
                 "data" => $new_display_activite,
                 "error" => $error,
                 "message" => $message,
-                "script" => "<script type='text/javascript' src='assets/js/edit_reaction.js'></script>"
+                "script" => "<script type='text/javascript' src='assets/js/manage_activite.js'></script>"
             ]);
 
             echo json_encode($json);
@@ -60,10 +60,15 @@ if (isset($_SESSION) && !empty($_SESSION['_1'])) {
             array_push($json, [
                 "data" => $new_display_activite,
                 "error" => $error,
-                "message" => '<script type="text/javascript" src="assets/js/add_comment.js"></script>'
+                "script" => "<script type='text/javascript' src='assets/js/manage_activite.js'></script>"
             ]);
 
             echo json_encode($json);
+        }elseif (isset($_POST['nouvelle-activite'])){
+            varDum($_POST);
+        }else{
+            header("Location: /");
+            die();
         }
     }else{
         header("Location: /");

@@ -11,7 +11,7 @@ class AppController extends Controller {
 
     public function __construct(){
 
-        $this->template = ROOT . '/app/Views/';
+        $this->viewPath = ROOT . '/app/Views/';
 
     }
 

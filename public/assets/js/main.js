@@ -16,6 +16,20 @@
     }, false);
 })();
 
+$chatHistory = $('.format-comment');
+
+function scrollToBottom() {
+    try {
+        this.$chatHistory.scrollTop(this.$chatHistory[0].scrollHeight);
+    }catch (e) {
+        
+    }
+}
+
+$(document).ready(function () {
+    scrollToBottom();
+});
+
 function keyUpCaratere(input, display, defaultMessage) {
     input.keyup(() => {
         if (input.val() === ""){
@@ -194,7 +208,7 @@ function displayAlert(message, alert){
                     alert = 'danger';
                 }
 
-                if (oReq.status == 200) {
+                if (oReq.status === 200) {
                     if (alert && data[0].message){
                         $('body').append(displayAlert(data[0].message, alert));
                     }
@@ -212,5 +226,7 @@ function displayAlert(message, alert){
     }catch (e) {
 
     }
+
+
 
 })(jQuery);

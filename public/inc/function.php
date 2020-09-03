@@ -18,10 +18,14 @@ function varDum($array){
 }
 
 function chargerClass($class){
-
-    $class = str_replace("App\\", "", $class);
-
-    require dirname(__DIR__, 2) . "\\app\\" . $class . ".class.php";
+    $i = explode("\\", $class);
+    if ($i[0] === "Core"){
+        $class = str_replace("Core\\", "", $class);
+        require dirname(__DIR__, 2) . "\\core\\" . $class . ".class.php";
+    }elseif ($i[0] === "App"){
+        $class = str_replace("App\\", "", $class);
+        require dirname(__DIR__, 2) . "\\app\\" . $class . ".class.php";
+    }
 }
 
 spl_autoload_register('chargerClass');
@@ -71,26 +75,7 @@ function ago( $datetime ){
 
 $activeSaut = true;
 
-$main_logo_web = "assets/img/icon/icon-website.webp";
-
 define("DEBUG", true);
 define("ROOT", dirname($_SERVER['DOCUMENT_ROOT']));
 
-
-$main_name_web = " - Nawastia Web";
-
-(DEBUG === true) ? $debug = "[DEBUG] " : $debug = null;
-!isset($main_logo_web) ? $main_logo_web = "assets/img/icon/icon-website.webp" : $main_logo_web;
-
 session_start();
-
-function allRole(\App\Utilisateur\UtilisateurDAO $utilisateurDAO, $userIdSession){
-    if ($userIdSession == null){
-        return [];
-    }else{
-        if (isset($_SESSION['_1'])){
-            $allRole = $utilisateurDAO->getAllRole($userIdSession);
-        }
-        return $allRole;
-    }
-}

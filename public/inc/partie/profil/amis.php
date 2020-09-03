@@ -39,7 +39,7 @@
 
                     <div class="card-body text-center">
 
-                        <?php $image__amis = getImageUtilisateur($utilisateurDAO, $utilisateur->id_utilisateur);?>
+                        <?php $image__amis = $main->getImageUtilisateur($utilisateurDAO, $utilisateur->id_utilisateur);?>
 
                         <a href="#" class="avatar avatar-xl card-avatar card-avatar-top">
                             <img src="<?= isset($image__amis) && $image__amis[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php?id=" . $utilisateur->id_utilisateur : $image__amis[0]['path']; ?>" class="avatar-img rounded-circle border border-4 border-card" alt="...">
@@ -105,7 +105,7 @@
                                     <a href="#" data-content="<?= base64_encode($utilisateur->id_utilisateur)?>" data-status="<?= base64_encode(2)?>" class="amis btn btn-sm btn-success">
                                         Accepter la demande
                                     </a>
-                                    <a href="#" data-content="<?= base64_encode($utilisateur->id_utilisateur)?>" data-status="<?= base64_encode(4)?>" class="amis btn btn-sm btn-success">
+                                    <a href="#" data-content="<?= base64_encode($utilisateur->id_utilisateur)?>" data-status="<?= base64_encode(4)?>" class="amis btn btn-sm btn-danger">
                                         Refuser la demande
                                     </a>
 

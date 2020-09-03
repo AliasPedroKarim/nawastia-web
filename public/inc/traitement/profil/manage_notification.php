@@ -65,7 +65,7 @@ if (isset($_SESSION['_1'])){
                                     if (!empty($notificationUtilisateur)):
                                         foreach ($notificationUtilisateur as $item => $notif):
                                             if (in_array($notif->id_status_notification, [1, 2])):
-                                                $image__notify = getImageUtilisateur($utilisateurDAO, $notif->id_notifieur);
+                                                $image__notify = $main->getImageUtilisateur($utilisateurDAO, $notif->id_notifieur);
                                                 ?>
                                                 <a class="notification list-group-item px-0 position-relative"
                                                    data-status="<?= base64_encode($notif->id_status_notification) ?>"

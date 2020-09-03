@@ -1,3 +1,9 @@
+<?php
+
+$mainController = new \App\Controller\MainController();
+
+extract($mainController->initMainConfig());
+?>
 <div class="modal fade fixed-right" id="modalDemo" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-dialog-vertical" role="document">
         <form class="modal-content" id="demoForm">

@@ -52,64 +52,68 @@
 
     var verifPasswordInput = function(displayMessage){
 
-        if (displayMessage === undefined){
-            displayMessage = false;
-        }
-
-        var valid = true;
-
-        if($('#old_password__edit').val() !== '' && $('#new_password__edit').val() !== '' && $('#similary_password__edit').val() !== ''){
-            valid = true;
-        }else if ($('#old_password__edit').val() === '' || $('#new_password__edit').val() === '' || $('#similary_password__edit').val() === '') {
-            valid = false;
-            if (displayMessage === true){
-                $('body').append(displayAlert(`<strong>Attention !</strong> L'un des champs de mots de passe n'est pas rempli.`, 'danger'));
+        try {
+            if (displayMessage === undefined){
+                displayMessage = false;
             }
+
+            var valid = true;
+
+            if($('#old_password__edit').val() !== '' && $('#new_password__edit').val() !== '' && $('#similary_password__edit').val() !== ''){
+                valid = true;
+            }else if ($('#old_password__edit').val() === '' || $('#new_password__edit').val() === '' || $('#similary_password__edit').val() === '') {
+                valid = false;
+                if (displayMessage === true){
+                    $('body').append(displayAlert(`<strong>Attention !</strong> L'un des champs de mots de passe n'est pas rempli.`, 'danger'));
+                }
+            }
+
+            if ($('#new_password__edit').val().length >= 8 && $('#similary_password__edit').val().length >= 8) {
+                $('.exigence-1').removeClass('text-danger');
+                valid = true;
+            }else{
+                $('.exigence-1').addClass('text-danger');
+                valid = false;
+            }
+
+            var pattern = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/gm;
+
+            if ($('#new_password__edit').val().match(pattern) === null && $('#similary_password__edit').val().match(pattern) === null){
+                $('.exigence-2').addClass('text-danger');
+                valid = false;
+            } else if ($('#new_password__edit').val().match(pattern) !== null && $('#similary_password__edit').val().match(pattern) !== null){
+                $('.exigence-2').removeClass('text-danger');
+                valid = true;
+            }
+
+            if ($('#new_password__edit').val().match(/[0-9]/gm) === null && $('#similary_password__edit').val().match(/[0-9]/gm) === null){
+                $('.exigence-3').addClass('text-danger');
+                valid = false;
+            } else if ($('#new_password__edit').val().match(/[0-9]/gm) !== null && $('#similary_password__edit').val().match(/[0-9]/gm) !== null) {
+                $('.exigence-3').removeClass('text-danger');
+                valid = true;
+            }
+
+            if ($('#new_password__edit').val() !== $('#similary_password__edit').val() || ($('#new_password__edit').val() === '' && $('#similary_password__edit').val() === '')){
+                $('#new_password__edit').addClass('is-invalid').removeClass('is-valid');
+                $('#similary_password__edit').addClass('is-invalid').removeClass('is-valid');
+                valid = false;
+            }else if ($('#new_password__edit').val() === $('#similary_password__edit').val() || ($('#new_password__edit').val() !== '' && $('#similary_password__edit').val() !== '')) {
+                $('#new_password__edit').removeClass('is-invalid').addClass('is-valid');
+                $('#similary_password__edit').removeClass('is-invalid').addClass('is-valid');
+                valid = true;
+            }
+
+            if (valid === true){
+                $("#edit_profil_password__edit").attr('onclick', null);
+            }else{
+                $("#edit_profil_password__edit").attr('onclick', 'return false');
+            }
+
+            return valid
+        }catch (e) {
+            return null;
         }
-
-        if ($('#new_password__edit').val().length >= 8 && $('#similary_password__edit').val().length >= 8) {
-            $('.exigence-1').removeClass('text-danger');
-            valid = true;
-        }else{
-            $('.exigence-1').addClass('text-danger');
-            valid = false;
-        }
-
-        var pattern = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/gm;
-
-        if ($('#new_password__edit').val().match(pattern) === null && $('#similary_password__edit').val().match(pattern) === null){
-            $('.exigence-2').addClass('text-danger');
-            valid = false;
-        } else if ($('#new_password__edit').val().match(pattern) !== null && $('#similary_password__edit').val().match(pattern) !== null){
-            $('.exigence-2').removeClass('text-danger');
-            valid = true;
-        }
-
-        if ($('#new_password__edit').val().match(/[0-9]/gm) === null && $('#similary_password__edit').val().match(/[0-9]/gm) === null){
-            $('.exigence-3').addClass('text-danger');
-            valid = false;
-        } else if ($('#new_password__edit').val().match(/[0-9]/gm) !== null && $('#similary_password__edit').val().match(/[0-9]/gm) !== null) {
-            $('.exigence-3').removeClass('text-danger');
-            valid = true;
-        }
-
-        if ($('#new_password__edit').val() !== $('#similary_password__edit').val() || ($('#new_password__edit').val() === '' && $('#similary_password__edit').val() === '')){
-            $('#new_password__edit').addClass('is-invalid').removeClass('is-valid');
-            $('#similary_password__edit').addClass('is-invalid').removeClass('is-valid');
-            valid = false;
-        }else if ($('#new_password__edit').val() === $('#similary_password__edit').val() || ($('#new_password__edit').val() !== '' && $('#similary_password__edit').val() !== '')) {
-            $('#new_password__edit').removeClass('is-invalid').addClass('is-valid');
-            $('#similary_password__edit').removeClass('is-invalid').addClass('is-valid');
-            valid = true;
-        }
-
-        if (valid === true){
-            $("#edit_profil_password__edit").attr('onclick', null);
-        }else{
-            $("#edit_profil_password__edit").attr('onclick', 'return false');
-        }
-
-        return valid
     };
 
     $(document).ready(function (event) {
@@ -159,43 +163,47 @@
         return false;
     });
 
-    var form = document.forms.namedItem("form_edit_profil_avatar");
-    form.addEventListener('submit', function(ev) {
+    try {
+        var form = document.forms.namedItem("form_edit_profil_avatar");
+        form.addEventListener('submit', function(ev) {
 
-        var oOutput = document.querySelector("div"),
-            oData = new FormData(form);
+            var oOutput = document.querySelector("div"),
+                oData = new FormData(form);
 
-        oData.append("photo-profil", document.getElementById('photo-profil__edit').files[0]);
+            oData.append("photo-profil", document.getElementById('photo-profil__edit').files[0]);
 
-        oData.append("edit_profil_avatar", "true");
+            oData.append("edit_profil_avatar", "true");
 
-        var oReq = new XMLHttpRequest();
-        oReq.open("POST", `${$(this).attr('action')}`, true);
-        oReq.onload = function(oEvent) {
+            var oReq = new XMLHttpRequest();
+            oReq.open("POST", `${$(this).attr('action')}`, true);
+            oReq.onload = function(oEvent) {
 
-            var data = JSON.parse(oReq.response)
-            var alert = '';
+                var data = JSON.parse(oReq.response)
+                var alert = '';
 
-            if (data[0].error === false){
-                $('#profil-edit').html(data[0].data);
-                alert = 'success';
-            }else{
-                alert = 'danger';
-            }
-
-            if (oReq.status == 200) {
-                if (alert && data[0].message){
-                    $('body').append(displayAlert(data[0].message, alert));
+                if (data[0].error === false){
+                    $('#profil-edit').html(data[0].data);
+                    alert = 'success';
+                }else{
+                    alert = 'danger';
                 }
-            } else {
-                if (alert && data[0].message){
-                    $('body').append(displayAlert("Attention ! Mise à jour de photo de profil incomplete <br>" +
-                        "Une erreur a été detecté !", 'danger'));
-                }
-            }
-        };
 
-        oReq.send(oData);
-        ev.preventDefault();
-    }, false);
+                if (oReq.status == 200) {
+                    if (alert && data[0].message){
+                        $('body').append(displayAlert(data[0].message, alert));
+                    }
+                } else {
+                    if (alert && data[0].message){
+                        $('body').append(displayAlert("Attention ! Mise à jour de photo de profil incomplete <br>" +
+                            "Une erreur a été detecté !", 'danger'));
+                    }
+                }
+            };
+
+            oReq.send(oData);
+            ev.preventDefault();
+        }, false);
+    }catch (e) {
+
+    }
 })(jQuery)

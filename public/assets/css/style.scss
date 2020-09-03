@@ -8,6 +8,7 @@ $padding-header-top-default: 72px + 4px;
 @import "bootstrap/bootstrap";
 @import "custom/card";
 @import "custom/popover";
+@import "custom/quill";
 
 *{
   font-family: Cerebri Sans, sans-serif;
@@ -134,7 +135,7 @@ body{
 }
 
 .jumbotron{
-  background-color: rgba(36, 41, 46, 0.4);
+  background-color: rgba(36, 41, 46, 0.5069);
   color: $white!important;
   .btn{
     font-weight: bold!important;
@@ -195,9 +196,9 @@ body{
   font-family: 'Cerebri-Sans', sans-serif;
 }
 
-.menu-user{
+/*.menu-user{
   right: 15%;
-}
+}*/
 
 .img-profil__user{
   width: 130px;
@@ -609,121 +610,7 @@ th {
   margin-bottom: 0
 }
 
-.badge {
-  vertical-align: middle
-}
-
-.btn .badge {
-  top: -2px
-}
-
-.badge-soft-primary {
-  color: #2c7be5;
-  background-color: #d5e5fa
-}
-
-.badge-soft-primary[href]:focus,
-.badge-soft-primary[href]:hover {
-  color: #2c7be5;
-  text-decoration: none;
-  background-color: #bed7f7
-}
-
-.badge-soft-secondary {
-  color: #6e84a3;
-  background-color: #e2e6ed
-}
-
-.badge-soft-secondary[href]:focus,
-.badge-soft-secondary[href]:hover {
-  color: #6e84a3;
-  text-decoration: none;
-  background-color: #d2d8e3
-}
-
-.badge-soft-success {
-  color: #00d97e;
-  background-color: #ccf7e5
-}
-
-.badge-soft-success[href]:focus,
-.badge-soft-success[href]:hover {
-  color: #00d97e;
-  text-decoration: none;
-  background-color: #b6f4da
-}
-
-.badge-soft-info {
-  color: #39afd1;
-  background-color: #d7eff6
-}
-
-.badge-soft-info[href]:focus,
-.badge-soft-info[href]:hover {
-  color: #39afd1;
-  text-decoration: none;
-  background-color: #c2e7f1
-}
-
-.badge-soft-warning {
-  color: #f6c343;
-  background-color: #fdf3d9
-}
-
-.badge-soft-warning[href]:focus,
-.badge-soft-warning[href]:hover {
-  color: #f6c343;
-  text-decoration: none;
-  background-color: #fcebc1
-}
-
-.badge-soft-danger {
-  color: #e63757;
-  background-color: #fad7dd
-}
-
-.badge-soft-danger[href]:focus,
-.badge-soft-danger[href]:hover {
-  color: #e63757;
-  text-decoration: none;
-  background-color: #f7c0ca
-}
-
-.badge-soft-light {
-  color: #edf2f9;
-  background-color: #fbfcfe
-}
-
-.badge-soft-light[href]:focus,
-.badge-soft-light[href]:hover {
-  color: #edf2f9;
-  text-decoration: none;
-  background-color: #e7edf9
-}
-
-.badge-soft-dark {
-  color: #12263f;
-  background-color: #d0d4d9
-}
-
-.badge-soft-dark[href]:focus,
-.badge-soft-dark[href]:hover {
-  color: #12263f;
-  text-decoration: none;
-  background-color: #c2c7ce
-}
-
-.badge-soft-white {
-  color: #fff;
-  background-color: #fff
-}
-
-.badge-soft-white[href]:focus,
-.badge-soft-white[href]:hover {
-  color: #fff;
-  text-decoration: none;
-  background-color: #f2f2f2
-}
+@import "custom/badge";
 
 @import "custom/navbar";
 
@@ -747,14 +634,14 @@ th {
 }
 
 .reaction_you {
-  background: rgba(92,106,158,.3);
-  color: #2c7be5;
-  border-color: #d5e5fa;
+  background: rgba(92,106,158,.3)!important;
+  color: #2c7be5!important;
+  border-color: #d5e5fa!important;
 }
 .reaction_you:hover {
-  background: rgba(92,106,158,.3);
-  color: #2c7be5;
-  border-color: #d5e5fa;
+  background: rgba(92,106,158,.3)!important;
+  color: #2c7be5!important;
+  border-color: #d5e5fa!important;
 }
 
 .scrollbar {
@@ -841,7 +728,208 @@ th {
 .dark-blur{
   width: 100%;
   height: 100vh;
-  background-color: rgba(0,0,0,.25);
+  background-color: rgba(0,0,0,.4899);
   z-index: -1;
   position: fixed;
+}
+
+time{
+  font-size: 0.8rem;
+}
+
+.alert-link {
+  text-decoration: underline
+}
+
+.alert-primary {
+  color: #fff;
+  background-color: #2c7be5;
+  border-color: #2c7be5
+}
+
+.alert-primary hr {
+  border-top-color: #1b6edc
+}
+
+.alert-primary .alert-link {
+  color: #e6e6e6
+}
+
+.alert-primary .alert-link,
+.alert-primary .close {
+  color: #fff
+}
+
+.alert-secondary {
+  color: #fff;
+  background-color: #6e84a3;
+  border-color: #6e84a3
+}
+
+.alert-secondary hr {
+  border-top-color: #607797
+}
+
+.alert-secondary .alert-link {
+  color: #e6e6e6
+}
+
+.alert-secondary .alert-link,
+.alert-secondary .close {
+  color: #fff
+}
+
+.alert-success {
+  color: #fff;
+  background-color: #00d97e;
+  border-color: #00d97e
+}
+
+.alert-success hr {
+  border-top-color: #00c06f
+}
+
+.alert-success .alert-link {
+  color: #e6e6e6
+}
+
+.alert-success .alert-link,
+.alert-success .close {
+  color: #fff
+}
+
+.alert-info {
+  color: #fff;
+  background-color: #39afd1;
+  border-color: #39afd1
+}
+
+.alert-info hr {
+  border-top-color: #2da2c3
+}
+
+.alert-info .alert-link {
+  color: #e6e6e6
+}
+
+.alert-info .alert-link,
+.alert-info .close {
+  color: #fff
+}
+
+.alert-warning {
+  color: #283e59;
+  background-color: #f6c343;
+  border-color: #f6c343
+}
+
+.alert-warning hr {
+  border-top-color: #f5bb2b
+}
+
+.alert-warning .alert-link {
+  color: #182536
+}
+
+.alert-warning .alert-link,
+.alert-warning .close {
+  color: #283e59
+}
+
+.alert-danger {
+  color: #fff;
+  background-color: #e63757;
+  border-color: #e63757
+}
+
+.alert-danger hr {
+  border-top-color: #e32044
+}
+
+.alert-danger .alert-link {
+  color: #e6e6e6
+}
+
+.alert-danger .alert-link,
+.alert-danger .close {
+  color: #fff
+}
+
+.alert-light {
+  color: #283e59;
+  background-color: #edf2f9;
+  border-color: #edf2f9
+}
+
+.alert-light hr {
+  border-top-color: #dae4f3
+}
+
+.alert-light .alert-link {
+  color: #182536
+}
+
+.alert-light .alert-link,
+.alert-light .close {
+  color: #283e59
+}
+
+.alert-dark {
+  color: #fff;
+  background-color: #12263f;
+  border-color: #12263f
+}
+
+.alert-dark hr {
+  border-top-color: #0c1a2b
+}
+
+.alert-dark .alert-link {
+  color: #e6e6e6
+}
+
+.alert-dark .alert-link,
+.alert-dark .close {
+  color: #fff
+}
+
+.alert-white {
+  color: #283e59;
+  background-color: #fff;
+  border-color: #fff
+}
+
+.alert-white hr {
+  border-top-color: #f2f2f2
+}
+
+.alert-white .alert-link {
+  color: #182536
+}
+
+.alert-white .alert-link,
+.alert-white .close {
+  color: #283e59
+}
+
+.form-control-flush {
+  padding: 0;
+  border-width: 0
+}
+
+.form-control-flush,
+.form-control-flush:focus {
+  background-color: transparent
+}
+
+@import "custom/button";
+
+#dropdownMenu:before{
+  content: unset;
+  display: unset;
+}
+
+.container-fluid{
+  padding-left: unset;
+  padding-right: unset;
 }

@@ -75,35 +75,7 @@
 
                         <!-- Text -->
                         <p class="mb-3"> <!-- <a href="#!" class="badge badge-soft-primary">@...</a> -->
-                            <?php
-
-                            $message = $value->text_activite;
-
-                            if(preg_match_all('/@(.*?)\s/m', $message, $matches)) {
-
-                                foreach ($matches[0] as $match){
-                                    preg_match_all("/[\.|\|\+|\*|\?|\[|\^|\]|\$|\(|\)|\{|\}|\=|\!|\<|\>|\||\:|\-|\#]/", $match, $i);
-                                    $j = array();
-                                    foreach ($i[0] as $k){
-                                        if (!in_array($k, $j)){
-                                            $j[] = $k;
-                                        }
-                                    }
-                                    if (!empty($j)){
-                                        foreach ($j as $item){
-                                            $match = preg_replace("/[\\" . $item . "]/", "\\" . $item, $match);
-                                        }
-                                    }
-                                    $message = preg_replace('#'. $match .'#', '<a href="#!" class="badge badge-soft-primary">'. stripslashes($match) .'</a>', $message);
-                                }
-                                echo $message;
-                            }else{
-                                echo $message;
-                            }
-
-
-
-                            ?>
+                            <?= $main->formatMesssage($value->text_activite); ?>
                         </p>
 
                         <!--<p class="mb-4">
@@ -210,7 +182,7 @@
                             foreach ($commentaires as $commentaire):
 
                                 $commenteur = $utilisateurDAO->findUtilisateurNoOjbet($commentaire->id_utilisateur, 'id_utilisateur');
-                                $commenteur_image = getImageUtilisateur($utilisateurDAO, $commentaire->id_utilisateur);
+                                $commenteur_image = $main->getImageUtilisateur($utilisateurDAO, $commentaire->id_utilisateur);
                                 ?>
 
                                 <div class="comment mb-3">
@@ -249,7 +221,7 @@
 
                                                 <!-- Text -->
                                                 <p class="comment-text">
-                                                    <?= $commentaire->text_commentaire ?>
+                                                    <?= nl2br($displaySecure->format_charac($commentaire->text_commentaire)) ?>
                                                 </p>
 
                                             </div>
@@ -270,7 +242,7 @@
 
                                 <!-- Avatar -->
                                 <div class="avatar">
-                                    <img src="<?= isset($infoImageProfle) && $infoImageProfle[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $infoImageProfle[0]['path']; ?>" alt="..." class="avatar-img rounded-circle">
+                                    <img src="<?= isset($profil_image) && $profil_image[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $profil_image[0]['path']; ?>" alt="..." class="avatar-img rounded-circle">
                                 </div>
 
                             </div>

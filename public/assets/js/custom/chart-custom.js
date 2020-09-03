@@ -98,14 +98,7 @@ var Demo = function() {
             r = "rgb(249, 251, 253)" == getComputedStyle(document.body).backgroundColor ? "light" : "dark";
 
         function l(a, e) {
-            if (a === undefined){
-                a = {
-                    padding: 199
-                }
-            }
-            for (var t in e) {
-                "object" != typeof e[t] ? a[t] = e[t] : l(a[t], e[t])
-            }
+            for (var t in e) "object" != typeof e[t] ? a[t] = e[t] : l(a[t], e[t])
         }
 
         function n(a) {
@@ -179,7 +172,7 @@ var Demo = function() {
                         arc: {
                             backgroundColor: o.primary[700],
                             borderColor: "dark" == r ? o.gray[800] : o.white,
-                            borderWidth: 3
+                            borderWidth: 4
                         }
                     },
                     tooltips: {
@@ -274,6 +267,7 @@ var Demo = function() {
             gridLines: {
                 drawBorder: !1,
                 drawOnChartArea: !1,
+                drawTicks: !1
             },
             ticks: {
                 padding: 20
@@ -579,7 +573,7 @@ var Demo = function() {
         t = e, hljs.highlightBlock(t)
     }),
     Lists = function() {
-        /*var a = $('[data-toggle="lists"]'),
+        var a = $('[data-toggle="lists"]'),
             e = $("[data-sort]");
         a.length && a.each(function() {
             var a, e;
@@ -589,7 +583,7 @@ var Demo = function() {
             })
         }), e.on("click", function() {
             return !1
-        })*/
+        })
     }(),
     Navbar = function() {
         var e = $(".navbar-nav, .navbar-nav .nav"),

@@ -122,7 +122,7 @@
       $.fn.emulateTransitionEnd = transitionEndEmulator;
       $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
     }catch (e) {
-      
+
     }
   }
   /**
@@ -4436,5 +4436,4 @@
   Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
-//# sourceMappingURL=bootstrap.js.map
 

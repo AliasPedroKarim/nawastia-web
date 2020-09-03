@@ -16,7 +16,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="list-item">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto" style="margin-right: -2rem !important;">
                     <li class="nav-item active">
                         <div class="nav-link">
                             <a class="full-center text-light" href="/"><i class="fas fa-igloo"></i> <span class="sr-only">(current)</span></a>
@@ -40,36 +40,36 @@
                 <?php if (!isset($_SESSION['_1'])): ?>
                     <li class="nav-item">
                         <div class="nav-link">
-                            <a class="full-center text-light" href="inscription.php"><i class="fas fa-address-card"></i></a> <!-- <i class="fas fa-sign-out-alt"></i> -->
+                            <a class="full-center text-light" href="inscription"><i class="fas fa-address-card"></i></a> <!-- <i class="fas fa-sign-out-alt"></i> -->
                         </div>
                     </li>
                     <li class="nav-item">
                         <div class="nav-link">
-                            <a class="full-center text-light" href="connexion.php"><i class="fas fa-sign-in-alt"></i></a> <!-- <i class="far fa-user"></i> -->
+                            <a class="full-center text-light" href="connexion"><i class="fas fa-sign-in-alt"></i></a> <!-- <i class="far fa-user"></i> -->
                         </div>
                     </li>
                 <?php else: ?>
-                    <li class="nav-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <a class="nav-link dropdown-toggle no-effect-hover" href="#">
-                            <div class="d-inline-block align-top" style="width: 40px; height: 40px; background-size: cover; background-position: top center; border-radius: 50% 50%; background-image: url('<?= isset($infoImageProfle) && $infoImageProfle[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $infoImageProfle[0]['path']; ?>');">
+                    <li class="nav-item dropleft">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-split" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+                            <div class="d-inline-block align-top" style="width: 40px; height: 40px; background-size: cover; background-position: top center; border-radius: 50% 50%; background-image: url('<?= isset($profil_image) && $profil_image[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $profil_image[0]['path']; ?>');">
 
                             </div>
                         </a>
+                        <div class="dropdown-menu w-75" aria-labelledby="dropdownMenu">
+                            <h6 class="dropdown-header">Gestion</h6>
+                            <a class="dropdown-item" href="profil">Profil</a>
+                            <?php if (isset($_SESSION['_1'])):
+                                if (isset($navbar_status_admin) && !empty($navbar_status_admin)):
+                                    if ($navbar_status_admin == true):?>
+                                        <a class="dropdown-item" href="administration">Administration <span class="badge badge-danger">admin</span></a>
+                                        <a class="dropdown-item" href="administration">Statistique <span class="badge badge-danger">admin</span> </a>
+                                    <?php endif;
+                                endif; ?>
+                            <?php endif; ?>
+                            <h6 class="dropdown-header">Status</h6>
+                            <a class="dropdown-item" href="inc/traitement/deconnexion.php">Deconnexion</a>
+                        </div>
                     </li>
-                    <div class="dropdown-menu dropdown-menu-right menu-user">
-                        <h6 class="dropdown-header">Gestion</h6>
-                        <a class="dropdown-item" href="profil.php">Profil</a>
-                        <?php if (isset($_SESSION['_1'])):
-                            if (isset($navbar_status_admin) && !empty($navbar_status_admin)):
-                                if ($navbar_status_admin == true):?>
-                                    <a class="dropdown-item" href="administration.php">Administration <span class="badge badge-danger">admin</span></a>
-                                    <a class="dropdown-item" href="administration.php">Statistique <span class="badge badge-danger">admin</span> </a>
-                                <?php endif;
-                            endif; ?>
-                        <?php endif; ?>
-                        <h6 class="dropdown-header">Status</h6>
-                        <a class="dropdown-item" href="inc/traitement/deconnexion.php">Deconnexion</a>
-                    </div>
                 <?php endif; ?>
                 </ul>
 

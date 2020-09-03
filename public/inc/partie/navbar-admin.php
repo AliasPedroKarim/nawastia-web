@@ -21,7 +21,7 @@
                 <!-- Toggle -->
                 <a href="#" id="sidebarIcon" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="avatar avatar-sm avatar-online">
-                        <img src="<?= isset($infoImageProfle) && $infoImageProfle[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $infoImageProfle[0]['path']; ?>" class="avatar-img rounded-circle" alt="...">
+                        <img src="<?= isset($profil_image) && $profil_image[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $profil_image[0]['path']; ?>" class="avatar-img rounded-circle" alt="...">
                     </div>
                 </a>
 
@@ -81,7 +81,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="profil-edit-tab" data-toggle="tab" href="#profil-edit" role="tab" aria-controls="profil-edit" aria-selected="true">
-                                    Modifier <span class="badge badge-soft-success ml-auto">Bientot</span>
+                                    Modifier
                                 </a>
                             </li>
                         </ul>
@@ -166,6 +166,25 @@
                                                 <li class="nav-item">
                                                     <a href="#" class="nav-link ">
                                                         Overview
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link ">
+                                                        <?= isset($debug) ? $debug : null ?>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#sidebarActivite" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarActivite">
+                                            Activité
+                                        </a>
+                                        <div class="collapse " id="sidebarActivite">
+                                            <ul class="nav nav-sm flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="nouvelle-activite-tab" data-toggle="tab" href="#nouvelle-activite" role="tab" aria-controls="nouvelle-activite" aria-selected="true">
+                                                        Nouvelle
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
@@ -349,13 +368,13 @@
                     <!-- Toggle -->
                     <a href="#" id="sidebarIconCopy" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="avatar avatar-sm avatar-online">
-                            <img src="<?= isset($infoImageProfle) && $infoImageProfle[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $infoImageProfle[0]['path']; ?>" class="avatar-img rounded-circle" alt="...">
+                            <img src="<?= isset($profil_image) && $profil_image[0]['blob'] == 1 ? "inc/partie/blob/displayImage.php" : $profil_image[0]['path']; ?>" class="avatar-img rounded-circle" alt="...">
                         </div>
                     </a>
 
                     <!-- Menu -->
                     <div class="dropdown-menu" aria-labelledby="sidebarIconCopy">
-                        <a href="profil.php" class="dropdown-item">Profile</a>
+                        <a href="profil" class="dropdown-item">Profile</a>
                         <!--<a href="#" class="dropdown-item">Settings</a>-->
                         <hr class="dropdown-divider">
                         <a href="inc/traitement/deconnexion.php" class="dropdown-item">Logout</a>

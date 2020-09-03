@@ -1,11 +1,10 @@
 <?php $notification = new \App\Utilisateur\NotificationDAO(); ?>
 
 <!-- Modal: Activity -->
-<?php if (isset($_SESSION) && isset($_SESSION['_1'])):
-    $notificationUtilisateur = $main->getStatus('notification', ["id_notifier" => $_SESSION['_1']->getId(), "id_status_notification" => 1]);
-    ?>
+<?php if (isset($_SESSION) && isset($_SESSION['_1']) && isset($main)):
+    $notificationUtilisateur = $main->getStatus('notification', ["id_notifier" => $_SESSION['_1']->getId(), "id_status_notification" => 1]); ?>
 
-    <div class="modal fade text-dark" id="sidebarModalActivity" tabindex="-1" role="dialog" style="display: none;" aria-modal="false">
+            <div class="modal fade text-dark" id="sidebarModalActivity" tabindex="-1" role="dialog" style="display: none;" aria-modal="false">
         <div class="modal-dialog modal-dialog-vertical" role="document" id="notification">
             <div class="modal-content">
                 <div class="modal-header">
@@ -29,12 +28,12 @@
                     <div class="list-group list-group-flush my-n3">
                         <?php if (isset($main)):
 
-                            $notificationUtilisateur = $main->getStatus('notification', ["id_notifier" => $_SESSION['_1']->getId()]);
+                            $notificationUtilisateur = array_reverse($main->getStatus('notification', ["id_notifier" => $_SESSION['_1']->getId()]));
 
                             if (!empty($notificationUtilisateur)):
                                 foreach ($notificationUtilisateur as $item => $notif):
                                     if (in_array($notif->id_status_notification, [1, 2])):
-                                    $image__notify = getImageUtilisateur($utilisateurDAO, $notif->id_notifieur);
+                                    $image__notify = $main->getImageUtilisateur($utilisateurDAO, $notif->id_notifieur);
                                     ?>
                                     <a class="<?= $notif->id_status_notification == 1 ? "notification" : null ?> list-group-item px-0 position-relative" <?= $notif->id_status_notification == 1 ? "data-status=" . base64_encode($notif->id_status_notification) . " data-content=" . base64_encode($notif->id_notification) : null ?>  href="<?= $notif->lien_notification ?>">
 
