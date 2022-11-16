@@ -21,10 +21,10 @@ function chargerClass($class){
     $i = explode("\\", $class);
     if ($i[0] === "Core"){
         $class = str_replace("Core\\", "", $class);
-        require dirname(__DIR__, 2) . "/core/" . $class . ".class.php";
+        require dirname(__DIR__, 2) . "/core/" . str_replace("\\", "/", $class) . ".class.php";
     }elseif ($i[0] === "App"){
         $class = str_replace("App\\", "", $class);
-        require dirname(__DIR__, 2) . "/app/" . $class . ".class.php";
+        require dirname(__DIR__, 2) . "/app/" . str_replace("\\", "/", $class) . ".class.php";
     }
 }
 
