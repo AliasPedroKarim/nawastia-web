@@ -18,12 +18,12 @@ function varDum($array){
 }
 
 function chargerClass($class){
-    $i = explode("/", $class);
+    $i = explode("\\", $class);
     if ($i[0] === "Core"){
-        $class = str_replace("Core/", "", $class);
+        $class = str_replace("Core\\", "", $class);
         require dirname(__DIR__, 2) . "/core/" . $class . ".class.php";
     }elseif ($i[0] === "App"){
-        $class = str_replace("App/", "", $class);
+        $class = str_replace("App\\", "", $class);
         require dirname(__DIR__, 2) . "/app/" . $class . ".class.php";
     }
 }
