@@ -3,21 +3,28 @@ use App\Controller\MainController;
 
 require_once 'inc/function.php';
 
-isset($_GET['one']) ? $one = $_GET['one'] : $one = 'home';
+$path = 'home';
+
+if (isset($_GET['path'])) {
+    $path = $_GET['path'];
+    if (substr($path, 0, 1) === "/") {
+        $path = str_replace("/", "", $path);
+    }
+}
 
 $controller = new MainController();
 
-if ($one === "home"){
+if ($path === "home"){
     $controller->home();
-}elseif ($one === "test"){
+}elseif ($path === "test"){
     $controller->test();
-}elseif ($one === "profil"){
+}elseif ($path === "profil"){
     $controller->profil();
-}elseif ($one === "administration"){
+}elseif ($path === "administration"){
     $controller->administration();
-}elseif ($one === "connexion"){
+}elseif ($path === "connexion"){
     $controller->connexion();
-}elseif ($one === "inscription"){
+}elseif ($path === "inscription"){
     $controller->inscription();
 }else{
     $controller->not_found();
