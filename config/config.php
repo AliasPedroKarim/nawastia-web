@@ -1,7 +1,7 @@
 <?php
 return array(
-    "db_user" => "intermediaire",
-    "db_pass" => "N76XFoW2F4qITFPi",
+    "db_user" => "nawastia_db",
+    "db_pass" => "PASSWORD_HARD",
     "db_host" => "localhost",
     "db_name" => "nawastia_db",
     "port" => 3306,
